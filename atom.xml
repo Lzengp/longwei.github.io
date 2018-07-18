@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://Lzengp.cn/"/>
-  <updated>2018-07-18T09:37:37.781Z</updated>
+  <updated>2018-07-18T09:51:55.921Z</updated>
   <id>http://Lzengp.cn/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://Lzengp.cn/2018/07/18/MarkDown%E8%AF%AD%E6%B3%95%E6%B5%8B%E8%AF%95/"/>
     <id>http://Lzengp.cn/2018/07/18/MarkDown语法测试/</id>
     <published>2018-07-18T08:43:21.000Z</published>
-    <updated>2018-07-18T09:37:37.781Z</updated>
+    <updated>2018-07-18T09:51:55.921Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-段落与行"><a href="#1-段落与行" class="headerlink" title="1.段落与行"></a>1.段落与行</h3><p>在行末敲入一个或以上回车（两段空一行），可将此句变成段落。</p><p>在行末敲入两个或以上空格再回车（行末空两格），可将此句强制换行。<br>强制换行后的第二行</p><a id="more"></a><h3 id="2-图片上传"><a href="#2-图片上传" class="headerlink" title="2.图片上传"></a>2.图片上传</h3><p>本地上传，地址：/MarkDown语法测试/header.png： <img src="/MarkDown语法测试/header.png" alt="header.png"></p><p>七牛云链接上传（没实名认证，然后去qq空间复制了一张图的地址，以后在玩这个七牛云）：<img src="https://b358.photo.store.qq.com/psb?/sa14V12oXCmn3gB5xs32bc339f292b9281cee4421088c2e56ba114V10pzsvD1nhIHT/DvUrGeovBBCmW6PN5hGc549kdcltDz7OKdY3oVGtQYc!/m/dGYBAAAAAAAAnull&amp;bo=uAHuAQAAAAAFCXw!&amp;rf=photolist&amp;t=5" alt="花"></p><h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3.字体"></a>3.字体</h3><ul><li>加粗： <strong>加粗</strong></li><li>斜体： <em>斜体</em></li><li>删除线： <del>删除线</del></li><li>底纹：’底纹’</li></ul><h3 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String a;</span><br><span class="line">String b;</span><br></pre></td></tr></table></figure><p>先玩到这里，以后自己写了在弄。</p><p>推荐几个实用的网站：</p><p><a href="https://www.jianshu.com/p/0130ad32a08d" target="_blank" rel="noopener">Markdown语法入门</a></p><p><a href="http://www.cnblogs.com/fengxiongZz/p/7707219.html" target="_blank" rel="noopener">Hexo+Github搭建自己博客</a></p><p><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo使用文档</a></p><p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">换电脑之后怎么使用Hexo</a></p><p><a href="http://xiaweizi.cn/article/31905/" target="_blank" rel="noopener">一位帮助我的大佬博客</a></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="1-段落与行"><a href="#1-段落与行" class="headerlink" title="1.段落与行"></a>1.段落与行</h3><p>在行末敲入一个或以上回车（两段空一行），可将此句变成段落。</p><p>在行末敲入两个或以上空格再回车（行末空两格），可将此句强制换行。<br>强制换行后的第二行</p><a id="more"></a><h3 id="2-图片上传"><a href="#2-图片上传" class="headerlink" title="2.图片上传"></a>2.图片上传</h3><p>本地上传，地址：/MarkDown语法测试/header.png： <img src="/img/header.png" alt="header.png"></p><p>七牛云链接上传（没实名认证，然后去qq空间复制了一张图的地址，以后在玩这个七牛云）：<img src="https://b358.photo.store.qq.com/psb?/sa14V12oXCmn3gB5xs32bc339f292b9281cee4421088c2e56ba114V10pzsvD1nhIHT/DvUrGeovBBCmW6PN5hGc549kdcltDz7OKdY3oVGtQYc!/m/dGYBAAAAAAAAnull&amp;bo=uAHuAQAAAAAFCXw!&amp;rf=photolist&amp;t=5" alt="花"></p><h3 id="3-字体"><a href="#3-字体" class="headerlink" title="3.字体"></a>3.字体</h3><ul><li>加粗： <strong>加粗</strong></li><li>斜体： <em>斜体</em></li><li>删除线： <del>删除线</del></li><li>底纹：’底纹’</li></ul><h3 id="4-代码"><a href="#4-代码" class="headerlink" title="4.代码"></a>4.代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">String a;</span><br><span class="line">String b;</span><br></pre></td></tr></table></figure><p>先玩到这里，以后自己写了在弄。</p><p>推荐几个实用的网站：</p><p><a href="https://www.jianshu.com/p/0130ad32a08d" target="_blank" rel="noopener">Markdown语法入门</a></p><p><a href="http://www.cnblogs.com/fengxiongZz/p/7707219.html" target="_blank" rel="noopener">Hexo+Github搭建自己博客</a></p><p><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo使用文档</a></p><p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">换电脑之后怎么使用Hexo</a></p><p><a href="http://xiaweizi.cn/article/31905/" target="_blank" rel="noopener">一位帮助我的大佬博客</a></p>]]></content>
     
     <summary type="html">
     
