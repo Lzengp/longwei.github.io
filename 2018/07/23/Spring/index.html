@@ -6,27 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lzengp.cn">
-  <title>关于hexo+github搭建博客遇到的问题 | Lzengp的博客</title>
+  <title>Spring学习笔记(二)之Spring IoC | Lzengp的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言关于hexo+github搭建自己的博客网上有很多介绍，我就不再介绍了，文章底部我推荐了一些网站给大家，我现在就提出关于我安装过程中出现的问题以及自己的一些看法。">
-<meta name="keywords" content="gitbase不能用,nodejs回滚,实用的网站">
+  <meta name="description" content="前言控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说">
+<meta name="keywords" content="spring,IoC,依赖注入,注解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于hexo+github搭建博客遇到的问题">
-<meta property="og:url" content="http://lzengp.cn/2018/07/20/关于hexo-github搭建博客遇到的问题/index.html">
+<meta property="og:title" content="Spring学习笔记(二)之Spring IoC">
+<meta property="og:url" content="http://lzengp.cn/2018/07/23/Spring/index.html">
 <meta property="og:site_name" content="Lzengp的博客">
-<meta property="og:description" content="前言关于hexo+github搭建自己的博客网上有很多介绍，我就不再介绍了，文章底部我推荐了一些网站给大家，我现在就提出关于我安装过程中出现的问题以及自己的一些看法。">
+<meta property="og:description" content="前言控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/13600188.jpg">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/61600081.jpg">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/36841979.jpg">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/53006494.jpg">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/14820964.jpg">
-<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/56936248.jpg">
-<meta property="og:updated_time" content="2018-07-20T11:25:58.241Z">
+<meta property="og:updated_time" content="2018-07-23T13:22:22.174Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于hexo+github搭建博客遇到的问题">
-<meta name="twitter:description" content="前言关于hexo+github搭建自己的博客网上有很多介绍，我就不再介绍了，文章底部我推荐了一些网站给大家，我现在就提出关于我安装过程中出现的问题以及自己的一些看法。">
-<meta name="twitter:image" content="http://pc57xo61v.bkt.clouddn.com/18-7-20/13600188.jpg">
+<meta name="twitter:title" content="Spring学习笔记(二)之Spring IoC">
+<meta name="twitter:description" content="前言控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说">
   
     <link rel="alternative" href="/atom.xml" title="Lzengp的博客" type="application/atom+xml">
   
@@ -168,43 +161,143 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-关于hexo-github搭建博客遇到的问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Spring" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      关于hexo+github搭建博客遇到的问题
+      Spring学习笔记(二)之Spring IoC
     </h1>
   
 
         
 
         
-        <a href="/2018/07/20/关于hexo-github搭建博客遇到的问题/" class="archive-article-date">
-  	<time datetime="2018-07-20T01:29:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-20</time>
+        <a href="/2018/07/23/Spring/" class="archive-article-date">
+  	<time datetime="2018-07-23T09:52:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-07-23</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>关于hexo+github搭建自己的博客网上有很多介绍，我就不再介绍了，文章底部我推荐了一些网站给大家，我现在就提出关于我安装过程中出现的问题以及自己的一些看法。</p>
-<a id="more"></a>
-<h3 id="Git的问题"><a href="#Git的问题" class="headerlink" title="Git的问题"></a>Git的问题</h3><p>1.安装git之后，打开git base，弹出下图最上面的文字，正常的是不会弹出这些的，然后输入git命令，发现命令也不能用（Git版本：windows版Git-2.18.0-64-bit）<br><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/13600188.jpg" alt="1.png"><br>说我没有C:/Program，的确没有，但我新建一个这样的文件之后再启动git base还是一样的，并且在再次开启电脑时还会弹出<br>【您的计算机上有名为“C:\Program”的文件或文件夹，该文件或文件夹将使某些应用程序工作不正常。将其更名为“C:\Program1”可以解决此问题。现在是否进行重命名？】<br>只有删到或更改名字才不会弹出这个<br>感觉是不是版本问题，下载了一个2.15版本的还是一样问题，试了下32位的问题还是一样的，基本排除了Git的版本的问题，我又在其他的电脑安装却没一点问题，不知道自己电脑怎么了，百度上也查不到<br>环境变量它自己帮我配置好了<br><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/61600081.jpg" alt="2.png"><br>命令提示符里面也可以使用git命令，说明git应该安装好了，只是git base用不了<br><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/36841979.jpg" alt="header.png"><br> 解决办法：老老实实的win+R输入cmd，进入hexo的安装根目录，然后的操作就和打开git base的操作一样了。</p>
-<h3 id="Nodejs回滚"><a href="#Nodejs回滚" class="headerlink" title="Nodejs回滚"></a>Nodejs回滚</h3><p>Nodejs安装就一直next，不过我再安装时出现了回滚，就是它帮你安装完成之后会删掉安装的文件，然后和没安装是一样的，这就尴尬了</p>
-<p><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/53006494.jpg" alt="header.png"><br> 解决办法：下载windows Binary与npm配置好环境变量<br>第一步<br>下载windows Binary ,进入官网就可以下载了,下载回来的是一个带exe后缀文件安装文件。<br>第二步<br> 官网下载npm文件最好选择最新的下载不然会出现版本问题（<a href="http://nodejs.org/dist/npm/" target="_blank" rel="noopener">下载地址</a>）<br>第三步<br>解压npm文件后会生成node_modules文件与npm.cmd指令文件,把刚刚下载的node.exe也放在同个目录，后就配置你的环境变量</p>
-<p><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/14820964.jpg" alt="header.png"><br>选择环境变量,新建一个变量名为:NODEJS_PATH与NODEJS_MODULE，NODEJS_PATH指定的是我本地的nodejs目录，NODEJS_MODULE指定的是node_modules目录,在变量值是：：F:\Program Files\nodejs\node_modules<br>好了现在我们把环境变量配好！现在对nodejs进行安装<br>第四步<br>1.安装express打开cmd命令行，使用命令定位到node_modules目录下,输入指令npm install express, 注意可以使用别外两种安装方法，express【安装express 至相对路径】或 npm install express -g【安装express到绝对路径】</p>
-<p><img src="http://pc57xo61v.bkt.clouddn.com/18-7-20/56936248.jpg" alt="header.png"></p>
-<p>2.输入node -v 如果能显现出版本号就表示安装成功</p>
-<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>不懂就百度，这句话还真的好用，实在不行就去翻墙，也是不错的。可能搭建的博客在Github上，而Github是国外的，本身有时访问比较慢，所以有时候进自己的博客要好久。<br>推荐几个网站,也方便自己以后有问题了也可以看看他们的：</p>
-<p><a href="http://www.cnblogs.com/fengxiongZz/p/7707219.html" target="_blank" rel="noopener">Hexo+Github搭建自己博客</a></p>
-<p><a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="noopener">Hexo使用文档</a><br>不过记住几个基本的命令就行了<br>hexo clean  删除，把public文件删除<br>hexo new 博客标题（<code>hexo n</code>）新建一篇文章<br>hexo generate（<code>hexo g</code>）生成静态文件<br>hexo server (<code>hexo s</code>) 启动服务，默认情况下，访问网址为：<code>http://localhost:4000</code>，如果端口被占可以输入 (<code>hexo s -p 端口号</code>)<br>hexo deploy（<code>hexo d</code>）部署网站，也可以生成与部署一起（<code>hexo g -d</code>）<br>当年hexo s启动服务时，然后输入localhost:4000查看时，你可以在本地更改，然后保存，再刷新网页，就可以实时预览了。</p>
-<p><a href="https://www.zhihu.com/question/21193762" target="_blank" rel="noopener">换电脑之后怎么使用Hexo</a></p>
-<p><a href="https://www.jianshu.com/p/0130ad32a08d" target="_blank" rel="noopener">Markdown语法入门</a><br>本人是用Sublime Text 3来写的,感觉还不错,注意一下符号问题，中文符号是不能识别的</p>
-<p><a href="http://xiaweizi.cn/article/31905/" target="_blank" rel="noopener">hexo博客小功能添加-评论、相册、字数统计</a><br>关于评论功能yilia主题里面有很多，1、多说；2、网易云跟帖；3、畅言；4、Disqus；5、Gitment，但唯独没配置来必力，多说和网易云跟帖关闭了，畅言还要备案，其他两个没研究，就按照博主注册了来必力，毕竟国外的，加载有点慢,并且登录官网也很慢。</p>
-<p><a href="https://blog.csdn.net/qq_36305327/article/details/71578290" target="_blank" rel="noopener">七牛上传图片制作外链</a><br>关于上传图片问题，用七牛做图床也不错，毕竟Github Pages空间有限，之前傻不拉几的用QQ空间生成的图片放到博客里面来，结果第一天还好好的，第二天就出现不能转载，听说微博也可做图床，自己没试过，当然也要把图片备份一下，最好不过。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>控制反转（Inversion of Control，缩写为IoC），是面向对象编程中的一种设计原则，可以用来减低计算机代码之间的耦合度。其中最常见的方式叫做依赖注入（Dependency Injection，简称DI），还有一种方式叫“依赖查找”（Dependency Lookup）。通过控制反转，对象在被创建的时候，由一个调控系统内所有对象的外界实体，将其所依赖的对象的引用传递给它。也可以说，依赖被注入到对象中。<br>IOC（inversion of control）控制反转模式；控制反转是将组件间的依赖关系从程序内部提到外部来管理；<br>DI（dependency injection）依赖注入模式；依赖注入是指将组件的依赖通过外部以参数或其他形式注入；<br>两个说法本质上是一个意思。<br><a id="more"></a></p>
+<h2 id="spring的依赖注入"><a href="#spring的依赖注入" class="headerlink" title="spring的依赖注入"></a>spring的依赖注入</h2><ul>
+<li>注入的方式有三种：<ul>
+<li>第一种：使用构造函数注入</li>
+<li>第二种：使用set方法注入</li>
+<li>第三种：使用注解注入</li>
+</ul>
+</li>
+<li>注入的数据类型有三种：<ul>
+<li>第一类：基本类型和String类型</li>
+<li>第二类：其他bean类型（必须是在spring的配置文件中出现过的bean）</li>
+<li>第三类：复杂类型（集合类型）  </li>
+</ul>
+</li>
+</ul>
+<h3 id="构造函数注入"><a href="#构造函数注入" class="headerlink" title="构造函数注入"></a>构造函数注入</h3><ul>
+<li>设计的标签：constructor-arg</li>
+<li>标签属性：<ul>
+<li>type：指定参数的类型</li>
+<li>index：指定参数的索引位置，从0开始</li>
+<li>name：指定参数的名称<br>（上面三个属性是指定给哪个参数赋值，下面两个属性是指定赋什么值的）</li>
+<li>value:指定基本数据类型或String类型的数据</li>
+<li>ref：指定其他bean类型的数据</li>
+</ul>
+</li>
+<li>标签出现的位置:<ul>
+<li>写在bean标签内部  </li>
+</ul>
+</li>
+</ul>
+<p>实例：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"cn.hnust.service.impl.CustomerServiceImpl"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"username"</span> <span class="attr">value</span>=<span class="string">"lisi"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"today"</span> <span class="attr">ref</span>=<span class="string">"now"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"now"</span> <span class="attr">class</span>=<span class="string">"java.util.Date"</span>&gt;</span><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="set方法注入"><a href="#set方法注入" class="headerlink" title="set方法注入"></a>set方法注入</h3><ul>
+<li>涉及标签：property</li>
+<li>标签属性：<ul>
+<li>name：指定参数的set方法名称</li>
+<li>value：指定基本数据类型或String类型的数据</li>
+<li>ref：指定其他bean类型数据</li>
+</ul>
+</li>
+<li>标签出现的位置:<ul>
+<li>写在bean标签内部  </li>
+</ul>
+</li>
+</ul>
+<p>实例：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//实体类</span></span><br><span class="line"><span class="keyword">private</span> String userName;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setDriver</span><span class="params">(String name)</span></span>&#123;</span><br><span class="line">	<span class="keyword">this</span>.userName = userName;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<pre><code>bean.xml:
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService"</span> <span class="attr">class</span>=<span class="string">"cn.hnust.service.impl.CustomerServiceImpl2"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"userName"</span> <span class="attr">value</span>=<span class="string">"lisi"</span>&gt;</span><span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</code></pre><h3 id="复杂类型注入"><a href="#复杂类型注入" class="headerlink" title="复杂类型注入"></a>复杂类型注入</h3><p>结构相同，标签可以互换  </p>
+<p>实例：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"customerService3"</span> <span class="attr">class</span>=<span class="string">"cn.hnust.service.impl.CustomerServiceImpl2"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"mySet"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">set</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>AAA<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>BBB<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">set</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"myList"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">array</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">value</span>&gt;</span>CCC<span class="tag">&lt;/<span class="name">value</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">array</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"myMap"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">map</span>&gt;</span></span><br><span class="line">			&lt;entry key="testD" value="DDD"&lt;/entry&gt;</span><br><span class="line">		<span class="tag">&lt;/<span class="name">map</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">property</span> <span class="attr">name</span>=<span class="string">"myProps"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">props</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"testE"</span>&gt;</span>E<span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">prop</span> <span class="attr">key</span>=<span class="string">"testF"</span> <span class="attr">value</span>=<span class="string">"FFF"</span>&gt;</span><span class="tag">&lt;/<span class="name">prop</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">props</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">property</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="使用注解注入"><a href="#使用注解注入" class="headerlink" title="使用注解注入"></a>使用注解注入</h3><pre><code>xml：&lt;bean id=&quot;customerService&quot; class=&quot;cn.hnsut.serivec.impl.CustomerServiceImpl&quot;&gt;
+</code></pre><p>1.用于创建bean对象</p>
+<ul>
+<li>@Component<ul>
+<li>作用:就相当于配置一个bean标签</li>
+<li>它出现的位置：类上面</li>
+<li>属性：value，含义是指定bean的id，当不写时，它有默认值，默认值是：当前类的短名首字母改小写</li>
+</ul>
+</li>
+<li>由此注解衍生的三个注解：<ul>
+<li>@Controller        一般用于表现的注解</li>
+<li>@Service         一般用于业务层</li>
+<li>@Repository     一般用于持久层<br>他们和@Component的作用及属性都是一模一样  </li>
+</ul>
+</li>
+</ul>
+<p>bean.xml配置：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line">	<span class="tag">&lt;<span class="name">beans</span>  <span class="attr">xmlns</span>=<span class="string">"http://www.springframework.org/schema/beans"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">xmlns:context</span>=<span class="string">"http://www.springframework.org/schema/context"</span></span></span><br><span class="line"><span class="tag">			<span class="attr">xsi:schemaLocation</span>=<span class="string">"http://www.springframework.org/schema/context </span></span></span><br><span class="line"><span class="tag"><span class="string">			        			http://www.springframework.org/schema/context/spring-beans.xsd"</span>&gt;</span></span><br><span class="line">		<span class="comment">&lt;!-- 告知spring在创建容器时要扫描的包，当配置了此标签之后，spring创建容器就去找指定的包及其子包下找对应的注解，标签是在一个context的名称空间里，所以必须先导入context名称空间 --&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"cn.hnust"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br><span class="line">	 <span class="tag">&lt;/<span class="name">beans</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.用于注入数据的</p>
+<ul>
+<li>@Autowired<ul>
+<li>作用：自动按照类型注入，只要有唯一的类型匹配就能注入成功</li>
+<li>如果注入的bean在容器中类型不唯一时，它就会把变量名称作为bean的id，在容器中查找，找到后也能注入成功</li>
+<li>如果没有找到一致的bean的id，则报错</li>
+<li>当我们使用注解注入时，set方法就不是必须的了</li>
+</ul>
+</li>
+<li>@Qualifier<ul>
+<li>作用：在自动按照类型注入的基础上，再按照bean的id注入，它在给类成员注入数据时，不能独立使用，但是在给方法的形参注入数据时，可以独立使用</li>
+<li>属性:value:用于指定bean的id</li>
+</ul>
+</li>
+<li>@Resoure<ul>
+<li>作用：直接按照bean的id注入</li>
+<li>属性:name:用于指定bean的id</li>
+</ul>
+</li>
+</ul>
+<p><em>以上三个注解都是用于注入其他bean类型的。用于注入基本类型和String类型的要使用</em></p>
+<ul>
+<li>value<ul>
+<li>作用:用于注入基本类型和String类型的数据，它可以借助String的el表达式读取properties文件中的值</li>
+<li>属性:value:用于指定要注入的数据</li>
+</ul>
+</li>
+</ul>
+<p>3.用于改变作用范围的</p>
+<ul>
+<li>@Scope<ul>
+<li>作用：用于改变bean的作用范围</li>
+<li>属性:value:用于指定范围的值</li>
+<li>取值和xml中的scope属性的取值是一样的（singleton、prototype、request、session、globasession）  </li>
+</ul>
+</li>
+</ul>
+<p><em>记住@Component、@Resource、@Value、@Scope</em></p>
+<p>4.spring的新注解</p>
+<ul>
+<li>@Bean<ul>
+<li>作用：它是把方法的返回值存放spring容器中，改注解有一个属性，name：用于指定bean的id。当不指定时它的默认值就是方法名称</li>
+</ul>
+</li>
+</ul>
+<h3 id="spring整合JUnit"><a href="#spring整合JUnit" class="headerlink" title="spring整合JUnit"></a>spring整合JUnit</h3><p>第一步：拷贝spring提供的整合jar包<br>    spring-test-4.2.4.RELEASE.jar<br>第二步：使用JUnit提供的一个注解，把原有的main函数替换掉，换成spring提供的<br>    @RunWith<br>    要换的类:SpringJunit4ClassRunner<br>第三步：使用spring提供的注解告知spring，配置文件或者注解类所在的位置<br>    @ContextConfiguration<br>（注意：SpringJUnit4ClassRunner要JUnit5才能用，不然报错<br>1.可能刚加进去的包为加载到，需要到重构配置窗口中重新加载下所有包，一般eclipse自带的是junit4.4版本的。<br>2.第二种原因是spring不支持junit4.5一下的版本。所以只需要把junit4.4或者更低版本升级到更高就ok了）<br>实例:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 测试客户的业务层</span></span><br><span class="line"><span class="comment"> * Spring整合Junit</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> lw</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RunWith</span>(SpringJUnit4ClassRunner.class)</span><br><span class="line"><span class="meta">@ContextConfiguration</span>(locations= &#123;<span class="string">"classpath:bean.xml"</span>&#125;)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CustomerServiceTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Resource</span>(name=<span class="string">"customerService"</span>)</span><br><span class="line">	<span class="comment">//private ICustomerService cs = new CustomerServiceImpl();</span></span><br><span class="line">	<span class="keyword">private</span> ICustomerService cs;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 查询所有客户</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testFindAllCustomer</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//ApplicationContext ac = new ClassPathXmlApplicationContext("bean.xml");</span></span><br><span class="line">		<span class="comment">//ICustomerService cs = (ICustomerService) ac.getBean("customerService");</span></span><br><span class="line">		List&lt;Customer&gt; list = cs.findAllCustomer();</span><br><span class="line">		<span class="keyword">for</span>(Customer c : list) &#123;</span><br><span class="line">			System.out.println(c);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>bean.xml</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 配置spring在创建容器时要扫描的包--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">context:component-scan</span> <span class="attr">base-package</span>=<span class="string">"cn.hnust"</span>&gt;</span><span class="tag">&lt;/<span class="name">context:component-scan</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
 
@@ -249,15 +342,19 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">gitbase不能用</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">spring</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">nodejs回滚</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">IoC</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">实用的网站</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">依赖注入</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">注解</a>
         		</li>
       		
 		</ul>
@@ -313,7 +410,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://lzengp.cn/2018/07/20/关于hexo-github搭建博客遇到的问题/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lzengp.cn/2018/07/23/Spring/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -327,18 +424,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/07/23/aa/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Spring
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/07/19/Navicat安装与破解/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Navicat安装与破解</div>
+    <a href="/2018/07/23/aa/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Spring</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -365,7 +453,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git的问题"><span class="toc-number">2.</span> <span class="toc-text">Git的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Nodejs回滚"><span class="toc-number">3.</span> <span class="toc-text">Nodejs回滚</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后记"><span class="toc-number">4.</span> <span class="toc-text">后记</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring的依赖注入"><span class="toc-number">2.</span> <span class="toc-text">spring的依赖注入</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造函数注入"><span class="toc-number">2.1.</span> <span class="toc-text">构造函数注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#set方法注入"><span class="toc-number">2.2.</span> <span class="toc-text">set方法注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复杂类型注入"><span class="toc-number">2.3.</span> <span class="toc-text">复杂类型注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用注解注入"><span class="toc-number">2.4.</span> <span class="toc-text">使用注解注入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring整合JUnit"><span class="toc-number">2.5.</span> <span class="toc-text">spring整合JUnit</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
