@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lzengp.cn/"/>
-  <updated>2018-07-27T16:31:32.419Z</updated>
+  <updated>2018-08-02T01:51:10.243Z</updated>
   <id>http://lzengp.cn/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mybatis学习笔记(一)</title>
+    <link href="http://lzengp.cn/2018/08/02/Mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(%E4%B8%80)/"/>
+    <id>http://lzengp.cn/2018/08/02/Mybatis学习笔记(一)/</id>
+    <published>2018-08-02T01:39:42.000Z</published>
+    <updated>2018-08-02T01:51:10.243Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mybatis是什么"><a href="#mybatis是什么" class="headerlink" title="mybatis是什么"></a>mybatis是什么</h2><blockquote><p>mybatis是一个持久层的框架，是apache下的顶级项目<br>mybatis托管到goolecode下，再后来托管到github下（ <a href="https://github.com/mybatis/mybatis-3/releases" target="_blank" rel="noopener">https://github.com/mybatis/mybatis-3/releases</a> ）</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;mybatis是什么&quot;&gt;&lt;a href=&quot;#mybatis是什么&quot; class=&quot;headerlink&quot; title=&quot;mybatis是什么&quot;&gt;&lt;/a&gt;mybatis是什么&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;mybatis是一个持久层的框架，是apache下
+      
+    
+    </summary>
+    
+    
+      <category term="mybatis" scheme="http://lzengp.cn/tags/mybatis/"/>
+    
+      <category term="mapper" scheme="http://lzengp.cn/tags/mapper/"/>
+    
+      <category term="动态sql" scheme="http://lzengp.cn/tags/%E5%8A%A8%E6%80%81sql/"/>
+    
+  </entry>
   
   <entry>
     <title>SSH三大框架环境搭建版本三-XML和注解组合式整合，仅保留spring的主配置文件（实际开发中struts2文件也保留）</title>
