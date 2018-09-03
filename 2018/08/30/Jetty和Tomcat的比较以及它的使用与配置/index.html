@@ -8,21 +8,21 @@
   <link rel="dns-prefetch" href="http://lzengp.cn">
   <title>Jetty和Tomcat的比较以及它的使用与配置 | Lzengp的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="##介绍  Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是">
+  <meta name="description" content="介绍 Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是主要的">
 <meta name="keywords" content="Jetty">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jetty和Tomcat的比较以及它的使用与配置">
 <meta property="og:url" content="http://lzengp.cn/2018/08/30/Jetty和Tomcat的比较以及它的使用与配置/index.html">
 <meta property="og:site_name" content="Lzengp的博客">
-<meta property="og:description" content="##介绍  Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是">
+<meta property="og:description" content="介绍 Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是主要的">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/Jetty1.png">
 <meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/Jetty2.png">
 <meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/Jetty3.png">
-<meta property="og:updated_time" content="2018-08-30T03:11:09.434Z">
+<meta property="og:updated_time" content="2018-09-03T02:26:14.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jetty和Tomcat的比较以及它的使用与配置">
-<meta name="twitter:description" content="##介绍  Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是">
+<meta name="twitter:description" content="介绍 Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是主要的">
 <meta name="twitter:image" content="http://pc57xo61v.bkt.clouddn.com/Jetty1.png">
   
     <link rel="alternative" href="/atom.xml" title="Lzengp的博客" type="application/atom+xml">
@@ -201,16 +201,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>##介绍</p>
-<blockquote>
+        <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><blockquote>
 <p>Jetty 是一个开源的servlet容器，它为基于Java的web容器，例如JSP和servlet提供运行环境。Jetty是使用Java语言编写的，它的API以一组JAR包的形式发布。开发人员可以将Jetty容器实例化成一个对象，可以迅速为一些独立运行（stand-alone）的Java应用提供网络和web连接。<br>它的所有组件都是基于 Handler 来实现，当然它也支持 JMX。但是主要的功能扩展都可以用 Handler 来实现。可以说 Jetty 是面向 Handler 的架构，就像 Spring 是面向 Bean 的架构，iBATIS 是面向 statement 一样，而 Tomcat 是以多级容器构建起来的，它们的架构设计必然都有一个“元神”，所有以这个“元神“构建的其它组件都是肉身。</p>
 </blockquote>
 <a id="more"></a>
-<p>##比较<br>相同点<br>1.tomcat与jetty都是一种servlet引擎，他们都支持标准的servlet规范和javaEE规范</p>
+<h2 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h2><p>相同点<br>1.tomcat与jetty都是一种servlet引擎，他们都支持标准的servlet规范和javaEE规范</p>
 <p>不同点<br>1.架构比较<br>jetty相比tomcat更为简单<br>jetty架构是基于Handler来实现的，主要的扩展功能都可以用Handler来实现，扩展简单<br>tomcat的框架是基于容量设计的，进行扩展是需要了解tomcat的整体设计结构，不易扩展<br>2.性能比较<br>jetty和tomcat性能方面差异不大<br>jetty可以同时处理大量链接而且可以长时间保持链接，适合于javaWeb聊天应用<br>jetty的架构简单，因此作为服务器，jetty可以按需加载组件，减少不需要的组件，减少了服务器内存开销，从而提高服务器性能<br>jetty默认采用NIO结束来处理I/o请求上更占优势，在处理静态资源时，性能较高</p>
 <p>tomcat适合处理少数非常繁忙的连接，也就是连接生命周期短的话，tomcat的总体性能更高<br>tomcat默认采用B/o处理I/o请求，在处理静态资源时，性能较差</p>
 <p>3.其他比较<br>jetty的应用更加快捷，修改简单，对新的servlet规范的支持更好<br>tomcat目前应用比较广泛，对javaEE和servlet的支持更加全面，很多特性会直接集成进来</p>
-<p>##Eclipsea安装Jetty<br>Help&gt;Eclipse Marketplaces<br><img src="http://pc57xo61v.bkt.clouddn.com/Jetty1.png" alt=""></p>
+<h2 id="Eclipsea安装Jetty"><a href="#Eclipsea安装Jetty" class="headerlink" title="Eclipsea安装Jetty"></a>Eclipsea安装Jetty</h2><p>Help&gt;Eclipse Marketplaces<br><img src="http://pc57xo61v.bkt.clouddn.com/Jetty1.png" alt=""></p>
 <p>安装<br><img src="http://pc57xo61v.bkt.clouddn.com/Jetty2.png" alt=""></p>
 <p>配置<br><img src="http://pc57xo61v.bkt.clouddn.com/Jetty3.png" alt=""></p>
 <p><a href="https://www.ibm.com/developerworks/cn/java/j-lo-jetty/" target="_blank" rel="noopener">Jetty的原理</a>  </p>
@@ -357,7 +356,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍"><span class="toc-number">1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#比较"><span class="toc-number">2.</span> <span class="toc-text">比较</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Eclipsea安装Jetty"><span class="toc-number">3.</span> <span class="toc-text">Eclipsea安装Jetty</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -521,22 +520,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">spring介绍</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Bean创建</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">springAOP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">面向切面编程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Navicat</a>
               </li>
              
@@ -550,6 +533,22 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">仅留spring</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">spring介绍</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Bean创建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">springAOP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">面向切面编程</a>
               </li>
              
               <li class="article-tag-list-item">
