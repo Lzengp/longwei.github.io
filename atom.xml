@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lzengp.cn/"/>
-  <updated>2018-09-03T02:26:14.932Z</updated>
+  <updated>2018-09-11T07:11:38.949Z</updated>
   <id>http://lzengp.cn/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Maven学习笔记</title>
+    <link href="http://lzengp.cn/2018/09/11/Maven%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://lzengp.cn/2018/09/11/Maven学习笔记/</id>
+    <published>2018-09-11T07:01:31.000Z</published>
+    <updated>2018-09-11T07:11:38.949Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Maven介绍"><a href="#Maven介绍" class="headerlink" title="Maven介绍"></a>Maven介绍</h2><blockquote><p>Maven项目对象模型(POM),可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。<br>Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用 Maven 的比例在持续增长。<br>Maven这个单词来自于意第绪语（犹太语），意为知识的积累，最初在Jakata Turbine项目中用来简化构建过程。当时有一些项目（有各自Ant build文件），仅有细微的差别，而JAR文件都由CVS来维护。于是希望有一种标准化的方式构建项目，一个清晰的方式定义项目的组成，一个容易的方式发布项目的信息，以及一种简单的方式在多个项目中共享JARs。<a href="https://baike.baidu.com/item/Maven/6094909?fr=aladdin" target="_blank" rel="noopener">百度百科</a></p></blockquote><a id="more"></a><h2 id="个人理解"><a href="#个人理解" class="headerlink" title="个人理解"></a>个人理解</h2><p>Maven通过pom.xml配置文件去本地仓库找对应的jar包，而不用把jar包放在项目中，这样大大的减少了项目的大小，比如我之前建SSM项目导入的jar包就要10多M，现在几KB就可以了。maven项目中需要某一个jar包，只需要在maven项中配置需要的jar包坐标信息，maven程序根据jar包的坐标信息去jar仓库中查找jar包，就是对jar包的统一管理。</p><h2 id="Maven安装"><a href="#Maven安装" class="headerlink" title="Maven安装"></a>Maven安装</h2><p>1.在线安装，只是很慢（可能要很久，不建议使用），还有其他的安装，大家自己可去百度查<br>打开eclipse点击help–&gt;Install New Software,然后输入要下载插件的链接地址[<a href="http://m2eclipse.sonatype.org/sites/m2e" target="_blank" rel="noopener">http://m2eclipse.sonatype.org/sites/m2e</a> ]<br>如下图<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven1.png" alt=""><br>勾选择要下载的项，点击下一步进行下载。下载完成会自动安装。安装速度跟你自身网速和服务器有关。<br>2.下载安装包安装<br>（1）去官网下载maven安装包，<a href="https://maven.apache.org/download.cgi" target="_blank" rel="noopener">地址</a><br>（2）解压文件C:\Maven<br>（3）配置环境变量<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven2.png" alt=""><br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven3.png" alt=""></p><p>（4）验证，DOS输入mvn -v，出现一下信息表示安装成功<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven4.png" alt=""></p><p>这篇博客介绍的很详细，我也是照它学习的，本地仓库配置也介绍了，很不错<br><a href="https://www.cnblogs.com/eagle6688/p/7838224.html" target="_blank" rel="noopener">传送门</a></p><h2 id="用maven搭建一个简单的web项目"><a href="#用maven搭建一个简单的web项目" class="headerlink" title="用maven搭建一个简单的web项目"></a>用maven搭建一个简单的web项目</h2><p>首先File–&gt;New–&gt;Maven Project<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven5.png" alt=""><br>如果没看到Maven Project，可在other 里面搜索<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven6.png" alt=""></p><p>点击Next<br>  <img src="http://pc57xo61v.bkt.clouddn.com/Maven7.png" alt=""><br>选择webapp，再点击Next<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven8.png" alt=""></p><p>groupid和artifactId被统称为“坐标”是为了保证项目唯一性而提出的，如果你要把你项目弄到maven本地仓库去，你想要找到你的项目就必须根据这两个id去查找。<br>　　groupId一般分为多个段，这里我只说两段，第一段为域，第二段为公司名称。域又分为org、com、cn等等许多，其中org为非营利组织，com为商业组织。举个apache公司的tomcat项目例子：这个项目的groupId是org.apache，它的域是org（因为tomcat是非营利项目），公司名称是apache，artigactId是tomcat。<br>比如我创建一个项目，我一般会将groupId设置为cn.hnsut，cn表示域为中国，hnust是我学校的缩写，artifactId设置为mweb，表示你这个项目的名称是mweb，依照这个设置，你的包结构最好是cn.hnust.mweb打头的，如果有个TestMaven类，它的全路径就是cn.hnust.mweb.TestMaven<br>  <img src="http://pc57xo61v.bkt.clouddn.com/Maven9.png" alt=""><br>建成之后就会出现如下的目录，如果只有resources文件，可以这样操作：项目右键-&gt;buildPath configure Build Path-&gt;点击选项卡Libraries-&gt;选中JRE System Library-&gt;<br>点击edit-&gt;选中Alternate JRE-&gt;选择jdk-&gt;点击finish，点击ok，自动出现src/main/java和src/test/java<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven10.png" alt=""></p><p>其中src才是编译的代码区，源文件Java Resouces其实我们可以自己创建和删除，一般都在这里写代码，因为目录结构清晰，这只是开发人员用来方便于开发抽离抽来的目录。在java Resources目录下创建一个包，src在中自动会出现这个包。打开项目文件夹我们可以发现只有一个src文件，也就是说这两个其实是同一个文件夹。</p><h2 id="测试（使用Jetty）"><a href="#测试（使用Jetty）" class="headerlink" title="测试（使用Jetty）"></a>测试（使用Jetty）</h2><p>修改端口号和访问路径，点击Apply然后点击Run<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven11.png" alt=""><br>在浏览器输入上图的地址<br> <img src="http://pc57xo61v.bkt.clouddn.com/Maven12.png" alt=""><br>一个简单的web项目就搭建好了</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Maven介绍&quot;&gt;&lt;a href=&quot;#Maven介绍&quot; class=&quot;headerlink&quot; title=&quot;Maven介绍&quot;&gt;&lt;/a&gt;Maven介绍&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Maven项目对象模型(POM),可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。&lt;br&gt;Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用 Maven 的比例在持续增长。&lt;br&gt;Maven这个单词来自于意第绪语（犹太语），意为知识的积累，最初在Jakata Turbine项目中用来简化构建过程。当时有一些项目（有各自Ant build文件），仅有细微的差别，而JAR文件都由CVS来维护。于是希望有一种标准化的方式构建项目，一个清晰的方式定义项目的组成，一个容易的方式发布项目的信息，以及一种简单的方式在多个项目中共享JARs。&lt;a href=&quot;https://baike.baidu.com/item/Maven/6094909?fr=aladdin&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;百度百科&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Maven" scheme="http://lzengp.cn/tags/Maven/"/>
+    
+  </entry>
   
   <entry>
     <title>Jetty和Tomcat的比较以及它的使用与配置</title>
