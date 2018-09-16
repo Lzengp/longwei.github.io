@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Lzengp的博客">
 <meta property="og:description" content="Hibernate中的查询方式 hibernate中一共有5种查询方式OID查询：根据id查询一个实体涉及方法：get和loadSQL查询：使用SQL语句查询数据库涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到ConnectionHQL查询：使用HQL语句查询数据库QBC查询：使用Criteria对象查询数据库对象导航查询">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-14T08:42:08.499Z">
+<meta property="og:updated_time" content="2018-09-16T15:07:36.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hibernate学习笔记(一)">
 <meta name="twitter:description" content="Hibernate中的查询方式 hibernate中一共有5种查询方式OID查询：根据id查询一个实体涉及方法：get和loadSQL查询：使用SQL语句查询数据库涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到ConnectionHQL查询：使用HQL语句查询数据库QBC查询：使用Criteria对象查询数据库对象导航查询">
@@ -198,8 +198,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Hibernate中的查询方式"><a href="#Hibernate中的查询方式" class="headerlink" title="Hibernate中的查询方式"></a>Hibernate中的查询方式</h2><blockquote>
-<p>hibernate中一共有5种查询方式<br>OID查询：根据id查询一个实体<br>涉及方法：get和load<br>SQL查询：使用SQL语句查询数据库<br>涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到Connection<br>HQL查询：使用HQL语句查询数据库<br>QBC查询：使用Criteria对象查询数据库<br>对象导航查询<br><a id="more"></a><br><strong>只讲HQL查询</strong></p>
+<p>hibernate中一共有5种查询方式<br>OID查询：根据id查询一个实体<br>涉及方法：get和load<br>SQL查询：使用SQL语句查询数据库<br>涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到Connection<br>HQL查询：使用HQL语句查询数据库<br>QBC查询：使用Criteria对象查询数据库<br>对象导航查询    </p>
 </blockquote>
+<a id="more"></a>
+<p><strong>只讲HQL查询</strong></p>
 <h2 id="Query对象"><a href="#Query对象" class="headerlink" title="Query对象"></a>Query对象</h2><p>它是hibernate中的HQL查询方式<br>HQL：hibernate query language<br>获取该对象：session对象的方法<br>涉及的对象和方法：createQuery(String hql);<br>方法中的参数的含义：<br>        SQL： select cust_id from cust_customer<br>        HQL： select custId from Customer<br>        HQL语句就是把sql语句的表名换成类名，把字段名换成实体类中的属性名</p>
 <h2 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h2><p>工具类HibernateUtil<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.hnust.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽取hibernate的工具类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 龙伟</span></span><br><span class="line"><span class="comment"> * 2018年9月14日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtil</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SessionFactory sessionFactory;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//hibernate把可以遇见的异常都转换成运行时异常</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">				Configuration cfg = <span class="keyword">new</span> Configuration();</span><br><span class="line">				cfg.configure();</span><br><span class="line">				sessionFactory = cfg.buildSessionFactory();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(ExceptionInInitializerError e)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化SessionFactory失败，请检查配置文件！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * 获取一个新的Session对象</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Session <span class="title">openSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> sessionFactory.openSession();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
 <p>测试代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 基本查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"from Customer"</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
@@ -519,6 +521,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Jetty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">一级缓存</a>
               </li>
              
@@ -528,14 +538,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">逆向工程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jetty</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
