@@ -8,18 +8,20 @@
   <link rel="dns-prefetch" href="http://lzengp.cn">
   <title>Hibernate学习笔记(一) | Lzengp的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Hibernate中的查询方式 hibernate中一共有5种查询方式OID查询：根据id查询一个实体涉及方法：get和loadSQL查询：使用SQL语句查询数据库涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到ConnectionHQL查询：使用HQL语句查询数据库QBC查询：使用Criteria对象查询数据库对象导航查询">
-<meta name="keywords" content="HQL查询">
+  <meta name="description" content="Session Session接口负责执行被持久化对象的CRUD操作（CRUD的任务是完成与数据库的交流，包含了很多常见的SQL语句）。但需要注意的是Session对象是非线程安全的。同时，Hibernate的session不同于JSP应用中的HttpSession，这里当使用session这个术语时，其实指的是Hibernate中的session，而以后会将HttpSession对象称为用户se">
+<meta name="keywords" content="session,缓存与快照，生成策略，对象状态">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hibernate学习笔记(一)">
 <meta property="og:url" content="http://lzengp.cn/2018/09/14/Hibernate学习笔记(一)/index.html">
 <meta property="og:site_name" content="Lzengp的博客">
-<meta property="og:description" content="Hibernate中的查询方式 hibernate中一共有5种查询方式OID查询：根据id查询一个实体涉及方法：get和loadSQL查询：使用SQL语句查询数据库涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到ConnectionHQL查询：使用HQL语句查询数据库QBC查询：使用Criteria对象查询数据库对象导航查询">
+<meta property="og:description" content="Session Session接口负责执行被持久化对象的CRUD操作（CRUD的任务是完成与数据库的交流，包含了很多常见的SQL语句）。但需要注意的是Session对象是非线程安全的。同时，Hibernate的session不同于JSP应用中的HttpSession，这里当使用session这个术语时，其实指的是Hibernate中的session，而以后会将HttpSession对象称为用户se">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-09-16T15:07:36.841Z">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/hibernate3.png">
+<meta property="og:updated_time" content="2018-09-19T06:48:32.568Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hibernate学习笔记(一)">
-<meta name="twitter:description" content="Hibernate中的查询方式 hibernate中一共有5种查询方式OID查询：根据id查询一个实体涉及方法：get和loadSQL查询：使用SQL语句查询数据库涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到ConnectionHQL查询：使用HQL语句查询数据库QBC查询：使用Criteria对象查询数据库对象导航查询">
+<meta name="twitter:description" content="Session Session接口负责执行被持久化对象的CRUD操作（CRUD的任务是完成与数据库的交流，包含了很多常见的SQL语句）。但需要注意的是Session对象是非线程安全的。同时，Hibernate的session不同于JSP应用中的HttpSession，这里当使用session这个术语时，其实指的是Hibernate中的session，而以后会将HttpSession对象称为用户se">
+<meta name="twitter:image" content="http://pc57xo61v.bkt.clouddn.com/hibernate3.png">
   
     <link rel="alternative" href="/atom.xml" title="Lzengp的博客" type="application/atom+xml">
   
@@ -174,7 +176,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text"> 字数统计： </span>
-        <span class="post-count">1,248字</span>
+        <span class="post-count">1,740字</span>
       </span>
     </span>
 
@@ -190,30 +192,32 @@
 
         
         <a href="/2018/09/14/Hibernate学习笔记(一)/" class="archive-article-date">
-  	<time datetime="2018-09-14T07:52:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
+  	<time datetime="2018-09-14T02:49:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Hibernate中的查询方式"><a href="#Hibernate中的查询方式" class="headerlink" title="Hibernate中的查询方式"></a>Hibernate中的查询方式</h2><blockquote>
-<p>hibernate中一共有5种查询方式<br>OID查询：根据id查询一个实体<br>涉及方法：get和load<br>SQL查询：使用SQL语句查询数据库<br>涉及方式：第一种：SQLQuery（一般不怎么用）第二种：session的doWork方法，它可以拿到Connection<br>HQL查询：使用HQL语句查询数据库<br>QBC查询：使用Criteria对象查询数据库<br>对象导航查询    </p>
+        <h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><blockquote>
+<p>Session接口负责执行被持久化对象的CRUD操作（CRUD的任务是完成与数据库的交流，包含了很多常见的SQL语句）。但需要注意的是Session对象是非线程安全的。同时，Hibernate的session不同于JSP应用中的HttpSession，这里当使用session这个术语时，其实指的是Hibernate中的session，而以后会将HttpSession对象称为用户session<br>Session是应用程序与数据库之间交互操作的一个单线程对象，是Hibernate运作中心，它的功能是为持久化对象提供创建、读取和删除的能力，所有持久化对象必须在session的管理下才可以持久化操作<br>创建SessionFactory实例后，就可以通过它获取Session实例。获取Session实例有两种方式，一种是通过openSession()方法，另一种是通过getCurrenSession()方法。两种方法获取session的代码如下</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>只讲HQL查询</strong></p>
-<h2 id="Query对象"><a href="#Query对象" class="headerlink" title="Query对象"></a>Query对象</h2><p>它是hibernate中的HQL查询方式<br>HQL：hibernate query language<br>获取该对象：session对象的方法<br>涉及的对象和方法：createQuery(String hql);<br>方法中的参数的含义：<br>        SQL： select cust_id from cust_customer<br>        HQL： select custId from Customer<br>        HQL语句就是把sql语句的表名换成类名，把字段名换成实体类中的属性名</p>
-<h2 id="基本查询"><a href="#基本查询" class="headerlink" title="基本查询"></a>基本查询</h2><p>工具类HibernateUtil<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.hnust.util;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.hibernate.Session;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.SessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.hibernate.cfg.Configuration;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽取hibernate的工具类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 龙伟</span></span><br><span class="line"><span class="comment"> * 2018年9月14日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HibernateUtil</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> SessionFactory sessionFactory;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//hibernate把可以遇见的异常都转换成运行时异常</span></span><br><span class="line">	<span class="keyword">static</span> &#123;</span><br><span class="line">		<span class="keyword">try</span> &#123;</span><br><span class="line">				Configuration cfg = <span class="keyword">new</span> Configuration();</span><br><span class="line">				cfg.configure();</span><br><span class="line">				sessionFactory = cfg.buildSessionFactory();</span><br><span class="line">		&#125;<span class="keyword">catch</span>(ExceptionInInitializerError e)&#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> ExceptionInInitializerError(<span class="string">"初始化SessionFactory失败，请检查配置文件！"</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">/*</span></span><br><span class="line"><span class="comment">		 * 获取一个新的Session对象</span></span><br><span class="line"><span class="comment">		 */</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">static</span>  Session <span class="title">openSession</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> sessionFactory.openSession();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>测试代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 基本查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"from Customer"</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="条件查询"><a href="#条件查询" class="headerlink" title="条件查询"></a>条件查询</h2><p>占位符条件查询<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 条件查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"from Customer where custLevel=?  and custAddress=? "</span>);</span><br><span class="line">	query.setString(<span class="number">0</span>, <span class="string">"12"</span>);</span><br><span class="line">	query.setString(<span class="number">1</span>, <span class="string">"长沙"</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>冒号参数名(:参数名)条件查询，注意冒号和参数名之间不能有空格,<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery3</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"from Customer where custLevel= :custLevel  and custAddress like :custAddress"</span>);</span><br><span class="line">	query.setParameter(<span class="string">"custAddress"</span>, <span class="string">"%长%"</span>);</span><br><span class="line">	query.setParameter(<span class="string">"custLevel"</span>, <span class="string">"12"</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="排序查询"><a href="#排序查询" class="headerlink" title="排序查询"></a>排序查询</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * 排序查询</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery4</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Session session = HibernateUtil.openSession();</span><br><span class="line"><span class="comment">//开启事务</span></span><br><span class="line">Transaction tx = session.beginTransaction();</span><br><span class="line">Query query = session.createQuery(<span class="string">"from Customer order by custId desc"</span>);</span><br><span class="line">List list = query.list();</span><br><span class="line"><span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">	System.out.println(o);</span><br><span class="line">	&#125;</span><br><span class="line">tx.commit();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a>分页查询</h2><p>mysql分页关键字limit<br>Limit的两个参数含义<br>    第一个：查询的开始记录索引<br>    第二个：每次查询的条数<br>hibernate为我们提供了两个方法<br>    setFirstResult：设置查询的开始记录索引<br>    setMaxResults:设置每次查询的条数<br>不管是用什么数据库，涉及分页的都是这两个方法因为SQL语句的生成已经是hibernate的事了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 分页查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery5</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"from Customer"</span>);</span><br><span class="line">	query.setFirstResult(<span class="number">1</span>);</span><br><span class="line">	query.setMaxResults(<span class="number">2</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="统计查询"><a href="#统计查询" class="headerlink" title="统计查询"></a>统计查询</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 统计查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery6</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"select count(*) from Customer "</span>);</span><br><span class="line"><span class="comment">//	List list = query.list();</span></span><br><span class="line"><span class="comment">//	for(Object o:list) &#123;</span></span><br><span class="line"><span class="comment">//		System.out.println(o);</span></span><br><span class="line"><span class="comment">//		&#125;</span></span><br><span class="line">	Long count  = (Long) query.uniqueResult();<span class="comment">//返回结果唯一，可以用，不唯一用的话会报错</span></span><br><span class="line">	System.out.println(count);</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="投影查询（只查询需要的字段）"><a href="#投影查询（只查询需要的字段）" class="headerlink" title="投影查询（只查询需要的字段）"></a>投影查询（只查询需要的字段）</h2><p>当我们在查询实体时，只需要部分字段，而不是全部。并且希望它的返回结果使用实体类来封装，而不是Object{}这个时候我们称为创建实体类的投影<br>投影查询的用法：<br>1.查询语句需要使用new关键字<br>2.在实体类中添加对应参数列表的构造函数<br>在实体类添加以下代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(Long custId, String custName)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.custId = custId;</span><br><span class="line">		<span class="keyword">this</span>.custName = custName;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>测试代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery7</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(<span class="string">"select new cn.hnust.domain.Customer(custId,custName) from Customer "</span>);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>QBC的全称：Query By Criteria<br>它是一种更加面向对象的查询方式，它把生成语句的过程全都融入到方法之中了<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 基本查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	Query query = session.createQuery(Customer.class);</span><br><span class="line">	List list = query.list();</span><br><span class="line">	<span class="keyword">for</span>(Object o:list) &#123;</span><br><span class="line">		System.out.println(o);</span><br><span class="line">		&#125;</span><br><span class="line">	</span><br><span class="line">	tx.commit();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<p>truncate table cust_Customer重建表结构（删除所有信息）,删除表中的数据的方法有delete,truncate, 其中TRUNCATE TABLE用于删除表中的所有行，而不记录单个行删除操作。</p>
+<pre><code>//采用openSession方法创建session
+Session session = sessionFactory.openSession();
+//采用getCurrentSession()方法创建session
+Session session = sessionFactory.getCurrentSession();
+</code></pre><p>以上两种获取session对象实例方法的主要区别是，采用openSession方法获取Session实例时，SessionFactory直接创建一个新的Session实例，并且在使用完成之后需要调用close方法进行手动关闭。而getCurrentSession方法创建的Session实例会被绑定到当前线程中，它在提交或者回滚操作时会自动关闭，在没有配置Session绑定当前线程之前，getCurrentSession方法无法使用。</p>
+<h2 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h2><p>sava(Object entity);//保存一个实体到数据库<br>update(Object entity);//更新一个实体<br>delete(Object entity);//删除一条实体<br>get(Class class,Serializable);load();//根据id查询一个实体。参数含义：Class表示要查询的实体类字节码。Serializable就是查询条件。<br>beginTransaction();//开启事务，并返回事务对象</p>
+<p>细节：<br>由于SessionFactory已经维护了很多数据，所以Session就维护较少的内容<br>它是一个轻量级对象，并且它不是线程安全的！！！！<br>它维护了hibernate的一级缓存<br>它的反复创建销毁不会消耗太多资源</p>
+<p>使用原则：<br>每一个线程都只有一个Session对象</p>
+<p>为什么实现序列化<br>实现Serializable序列化：<br>所谓的Serializable,就是java提供的通用数据保存和读取的接口。至于从什么地方读出来和保存到哪里<br>去都被隐藏在函数参数的背后了。这样子，任何类型只要实现了Serializable接口，就可以被保存到文件中，或者作为数据流通过网络发送<br>到别的地方。也可以用管道来传输到系统的其他程序中。这样子极大的简化了类的设计。只要设计一个保存一个读取功能就能解决上面说得所有问题。</p>
+<h2 id="OID"><a href="#OID" class="headerlink" title="OID"></a>OID</h2><p>JVM内存中区分两个对象是否时同一个对象靠的是内存的地址，只要地址不相同，就可以创建两个对象。<br>Hibernate内存就是把对象看成Session对象，对象标识符：OID，hibernate中OID一致的对象，就认为是同一个对象，在一个Session，不允许出现两个相同类型的对象的OID一致。OID就是映射文件，对应数据库主键的属性<br>MySQL中区分记录是否相同，靠的是主键，表中不允许出现相同主键的两条数据。</p>
+<h2 id="主键生成策略"><a href="#主键生成策略" class="headerlink" title="主键生成策略"></a>主键生成策略</h2><p>自然主键(业务主键)：它的作用只是用于区分数据库中的记录的，不参与程序的业务逻辑<br>increment（一般不用：increment策略是指,不使用数据库本地的自增长策略,而是由程序(Hibernate框架)产生一个自增长的ID值,赋予数据库.<br>每次插入前都会去查询表中id最大的值,然后+1作为新主键</p>
+<p>代理主键(逻辑主键)：它不仅是用于区分数据库中记录的，还会参与程序的业务逻辑，自然主键一般都设计为有规律的<br>idenitty：identity策略,指定使用数据库里面的ID自增长策略. 只能用于支持ID自增长功能的数据库,如:MySQL,SQLServer.. 不支持没有ID自增长策略的数据库,如Oracle,DB2..<br>sequence：使用序列的实现ID生成策略,主要用于有序列的数据库.如:Oracle,DB2,如果不支持序列的数据库（如:MYSQL），该策略会使用一个表模拟序列。<br>native：使用数据库本地的策略,就是数据库里面使用怎么样的策略就用什么策略,HIbernate不做任何的判断.如:MySQL数据库使用了increment_auto,自增长策略.使用native.表示直接调用数据库里面的increment_auto策略.<br>uuid：就是数据库的主键是使用一个唯一的==字符串==的来存储.这个唯一的字符串就是UUID<br>主键必须为String类型</p>
+<h2 id="一级缓存和快照机制"><a href="#一级缓存和快照机制" class="headerlink" title="一级缓存和快照机制"></a>一级缓存和快照机制</h2><p>缓存:内存中临时数据，它可以减少和数据库交互次数，从而提高查询效率<br>适用缓存的数据：经常查询，并且不经常修改的，同时数据一旦出现问题对最终结果影响不大的<br>不适用缓存的数据：不管是否经常查询，只是经常修改的，都可以不用缓存，并且如果数据由于使用缓存，产生了异常数据，对最终结果影响很大，则不能使用。例如：股市的牌价，银行的汇率，商品的库存等等。<br>案例代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testQuery1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Session session = HibernateUtil.openSession();</span><br><span class="line">	<span class="comment">//开启事务</span></span><br><span class="line">	Transaction tx = session.beginTransaction();</span><br><span class="line">	<span class="comment">//根据id查询客户</span></span><br><span class="line">	Customer c = session.get(Customer.class,<span class="number">1L</span>);</span><br><span class="line">	System.out.println(c.getCustAddress());<span class="comment">//输出长沙</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//修改客户地址为  湘潭</span></span><br><span class="line">	c.setCustAddress(<span class="string">"湘潭"</span>)；</span><br><span class="line">	System.out.println(c.getCustAddress());<span class="comment">//输出湘潭</span></span><br><span class="line">	<span class="comment">//没有写update语句</span></span><br><span class="line">	tx.commit();</span><br><span class="line">	session.close();</span><br><span class="line">	<span class="comment">//打印c的address，这个c是可以用的</span></span><br><span class="line">	System.out.println(c.getCustAddress());<span class="comment">//输出湘潭</span></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以上程序中没有直接调用update方法，同样也对数据修改成功。主要是借助了Hibernate的快照功能<br>Hibernate向一级缓存放入数据时，同时复制一份数据放入到Hibernate快照中，当使用commit()方法提交事务时，同时会清理Session的一级缓存，这时会使用OID判断一级缓存中的对象和快照中的对象是否一致，如果两个对象中的属性发生变化，则执行update语句，将缓存的内容同步到数据库，并更新快照；如果一致，则不执行update语句。<br>结论：Hibernate快照的作用就是确保一级缓存中的数据和数据库中的数据一致。</p>
+<h2 id="Hibernate中的对象状态"><a href="#Hibernate中的对象状态" class="headerlink" title="Hibernate中的对象状态"></a>Hibernate中的对象状态</h2><p><img src="http://pc57xo61v.bkt.clouddn.com/hibernate3.png" alt=""><br>session对象close之后就不能用了，但clear之后还可以用，只是清除了缓存</p>
 
       
 
@@ -258,7 +262,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">HQL查询</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">session</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">缓存与快照，生成策略，对象状态</a>
         		</li>
       		
 		</ul>
@@ -328,7 +336,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/09/17/Hibernate学习笔记(二)/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/09/16/Hibernate学习笔记(二)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -366,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Hibernate中的查询方式"><span class="toc-number">1.</span> <span class="toc-text">Hibernate中的查询方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Query对象"><span class="toc-number">2.</span> <span class="toc-text">Query对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本查询"><span class="toc-number">3.</span> <span class="toc-text">基本查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#条件查询"><span class="toc-number">4.</span> <span class="toc-text">条件查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#排序查询"><span class="toc-number">5.</span> <span class="toc-text">排序查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分页查询"><span class="toc-number">6.</span> <span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#统计查询"><span class="toc-number">7.</span> <span class="toc-text">统计查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#投影查询（只查询需要的字段）"><span class="toc-number">8.</span> <span class="toc-text">投影查询（只查询需要的字段）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">9.</span> <span class="toc-text">其他</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">1.</span> <span class="toc-text">Session</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常用方法"><span class="toc-number">2.</span> <span class="toc-text">常用方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OID"><span class="toc-number">3.</span> <span class="toc-text">OID</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主键生成策略"><span class="toc-number">4.</span> <span class="toc-text">主键生成策略</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一级缓存和快照机制"><span class="toc-number">5.</span> <span class="toc-text">一级缓存和快照机制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Hibernate中的对象状态"><span class="toc-number">6.</span> <span class="toc-text">Hibernate中的对象状态</span></a></li></ol>
                     </div>
                 </span>
             </div>
@@ -421,7 +429,7 @@
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 33.8k 字啦</span>
+                <span class="post-count">  已经写了 35.5k 字啦</span>
             </div>
         
       <!--统计end-->
@@ -526,11 +534,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
+                <a href="javascript:void(0)" class="js-tag color3">session</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Jetty</a>
+                <a href="javascript:void(0)" class="js-tag color1">缓存与快照，生成策略，对象状态</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">HQL查询</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Navicat</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">破解</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -546,27 +566,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">注解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">仅留spring</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Navicat</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">破解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">spring介绍</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Bean创建</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Jetty</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Maven</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -578,7 +590,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">HQL查询</a>
+                <a href="javascript:void(0)" class="js-tag color3">注解</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">仅留spring</a>
               </li>
              
               <li class="article-tag-list-item">
