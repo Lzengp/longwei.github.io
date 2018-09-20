@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://lzengp.cn/"/>
-  <updated>2018-09-19T06:48:22.026Z</updated>
+  <updated>2018-09-20T07:32:18.645Z</updated>
   <id>http://lzengp.cn/</id>
   
   <author>
@@ -15,6 +15,58 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快速了解一些中间件</title>
+    <link href="http://lzengp.cn/2018/09/20/%E5%BF%AB%E9%80%9F%E4%BA%86%E8%A7%A3%E4%B8%80%E4%BA%9B%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
+    <id>http://lzengp.cn/2018/09/20/快速了解一些中间件/</id>
+    <published>2018-09-20T06:28:53.000Z</published>
+    <updated>2018-09-20T07:32:18.645Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote><p>最近公司开发遇到好多不懂的一些框架或者中间件，就百度了解了下，本博客基本上都是百度百科的，我只是收集起来，方便日后查阅，就不用一个一个再去查找。对这些中间件也只是了解而已，没做深入的研究。然后有些好的博客我也都保存了下来。<br>大致分一下：<code>dubbo分布式框架</code>，<code>zookeeper分布式程序协调服务</code>，<code>Nginx代理服务</code>，<code>Redis存储系统</code>，<code>ElasticSearch搜索服务器</code>，<code>Kafaka分布式发布订阅消息系统</code>。</p></blockquote><a id="more"></a><h2 id="Dubbo（开源分布式服务框架）"><a href="#Dubbo（开源分布式服务框架）" class="headerlink" title="Dubbo（开源分布式服务框架）"></a>Dubbo（开源分布式服务框架）</h2><p>Dubbo是阿里巴巴公司开源的一个高性能优秀的服务框架，使得应用可通过高性能的 RPC 实现服务的输出和输入功能，可以和Spring框架无缝集成。<br>dubbo架构图如下所示<br><img src="" alt=""><br>Provider<br>暴露服务方称之为“服务提供者”。<br>Consumer<br>调用远程服务方称之为“服务消费者”。<br>Registry<br>服务注册与发现的中心目录服务称之为“服务注册中心”。<br>Monitor<br>统计服务的调用次数和调用时间的日志服务称之为“服务监控中心”。<br><a href="https://blog.csdn.net/houshaolin/article/details/76408399" target="_blank" rel="noopener">Dubbo是什么？能做什么？</a><br><code>zookeeper在dubbo扮演的角色就是注册中心</code></p><h2 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h2><p>Nginx是一个http服务器。是一个使用c语言开发的高性能的http服务器及反向代理服务器。Nginx是一款高性能的http 服务器/反向代理服务器及电子邮件（IMAP/POP3）代理服务器。由俄罗斯的程序设计师Igor Sysoev所开发，官方测试nginx能够支支撑5万并发链接，并且cpu、内存等资源消耗却非常低，运行非常稳定。<br><a href="https://blog.csdn.net/kisscatforever/article/details/73129270" target="_blank" rel="noopener">什么是Nginx？为什么使用Nginx？</a></p><h2 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h2><p>是一个开源的使用ANSI C语言编写、支持网络、可基于内存亦可持久化的日志型、Key-Value数据库，并提供多种语言的API<br>redis是一个key-value存储系统。和Memcached类似，它支持存储的value类型相对更多，包括string(字符串)、list(链表)、set(集合)、zset(sorted set –有序集合)和hash（哈希类型）。这些数据类型都支持push/pop、add/remove及取交集并集和差集及更丰富的操作，而且这些操作都是原子性的。在此基础上，redis支持各种不同方式的排序。与memcached一样，为了保证效率，数据都是缓存在内存中。区别的是redis会周期性的把更新的数据写入磁盘或者把修改操作写入追加的记录文件，并且在此基础上实现了master-slave(主从)同步。<br>Redis 是一个高性能的key-value数据库。 redis的出现，很大程度补偿了memcached这类key/value存储的不足，在部 分场合可以对关系数据库起到很好的补充作用。它提供了Java，C/C++，C#，PHP，JavaScript，Perl，Object-C，Python，Ruby，Erlang等客户端，使用很方便。<br>Redis支持主从同步。数据可以从主服务器向任意数量的从服务器上同步，从服务器可以是关联其他从服务器的主服务器。这使得Redis可执行单层树复制。存盘可以有意无意的对数据进行写操作。由于完全实现了发布/订阅机制,使得从数据库在任何地方同步树时，可订阅一个频道并接收主服务器完整的消息发布记录。同步对读取操作的可扩展性和数据冗余很有帮助。</p><h2 id="ElasticSearch"><a href="#ElasticSearch" class="headerlink" title="ElasticSearch"></a>ElasticSearch</h2><p>ElasticSearch是一个基于Lucene的搜索服务器。它提供了一个分布式多用户能力的全文搜索引擎，基于RESTful web接口。Elasticsearch是用Java开发的，并作为Apache许可条款下的开放源码发布，是当前流行的企业级搜索引擎。设计用于云计算中，能够达到实时搜索，稳定，可靠，快速，安装使用方便。<br>我们建立一个网站或应用程序，并要添加搜索功能，但是想要完成搜索工作的创建是非常困难的。我们希望搜索解决方案要运行速度快，我们希望能有一个零配置和一个完全免费的搜索模式，我们希望能够简单地使用JSON通过HTTP来索引数据，我们希望我们的搜索服务器始终可用，我们希望能够从一台开始并扩展到数百台，我们要实时搜索，我们要简单的多租户，我们希望建立一个云的解决方案。因此我们利用Elasticsearch来解决所有这些问题及可能出现的更多其它问题。</p><h2 id="Kafka"><a href="#Kafka" class="headerlink" title="Kafka"></a>Kafka</h2><p>Kafka是由Apache软件基金会开发的一个开源流处理平台，由Scala和Java编写。Kafka是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据。 这种动作（网页浏览，搜索和其他用户的行动）是在现代网络上的许多社会功能的一个关键因素。 这些数据通常是由于吞吐量的要求而通过处理日志和日志聚合来解决。 对于像Hadoop的一样的日志数据和离线分析系统，但又要求实时处理的限制，这是一个可行的解决方案。Kafka的目的是通过Hadoop的并行加载机制来统一线上和离线的消息处理，也是为了通过集群来提供实时的消息。<br>Kafka是一种高吞吐量的分布式发布订阅消息系统，有如下特性：<br>通过O的磁盘数据结构提供消息的持久化，这种结构对于即使数以TB的消息存储也能够保持长时间的稳定性能。<br>高吞吐量：即使是非常普通的硬件Kafka也可以支持每秒数百万的消息。<br>支持通过Kafka服务器和消费机集群来分区消息。<br>支持Hadoop并行数据加载。</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;最近公司开发遇到好多不懂的一些框架或者中间件，就百度了解了下，本博客基本上都是百度百科的，我只是收集起来，方便日后查阅，就不用一个一个再去查找。对这些中间件也只是了解而已，没做深入的研究。然后有些好的博客我也都保存了下来。&lt;br&gt;大致分一下：&lt;code&gt;dubbo分布式框架&lt;/code&gt;，&lt;code&gt;zookeeper分布式程序协调服务&lt;/code&gt;，&lt;code&gt;Nginx代理服务&lt;/code&gt;，&lt;code&gt;Redis存储系统&lt;/code&gt;，&lt;code&gt;ElasticSearch搜索服务器&lt;/code&gt;，&lt;code&gt;Kafaka分布式发布订阅消息系统&lt;/code&gt;。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="dubbo" scheme="http://lzengp.cn/tags/dubbo/"/>
+    
+      <category term="Nginx" scheme="http://lzengp.cn/tags/Nginx/"/>
+    
+      <category term="Redis" scheme="http://lzengp.cn/tags/Redis/"/>
+    
+      <category term="ElasticSearch" scheme="http://lzengp.cn/tags/ElasticSearch/"/>
+    
+      <category term="Kafaka" scheme="http://lzengp.cn/tags/Kafaka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Zookeeper</title>
+    <link href="http://lzengp.cn/2018/09/20/Zookeeper/"/>
+    <id>http://lzengp.cn/2018/09/20/Zookeeper/</id>
+    <published>2018-09-20T03:41:31.000Z</published>
+    <updated>2018-09-20T06:22:05.780Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="什么是Apache-ZooKeeper"><a href="#什么是Apache-ZooKeeper" class="headerlink" title="什么是Apache ZooKeeper"></a>什么是Apache ZooKeeper</h2><blockquote><p>Apache ZooKeeper是由集群（节点组）使用的一种服务，用于在自身之间协调，并通过稳健的同步技术维护共享数据。ZooKeeper本身是一个分布式应用程序，为写入分布式应用程序提供服务。<br>Zookeeper是针对大型分布式系统的高可靠的协调系统。由这个定义我们知道zookeeper是个协调系统，作用的对象是分布式系统。为什么分布式系统需要一个协调系统了？理由如下：<br>开发分布式系统是件很困难的事情，其中的困难主要体现在分布式系统的“部分失败”。“部分失败”是指信息在网络的两个节点之间传送时候，如果网络出了故障，发送者无法知道接收者是否收到了这个信息，而且这种故障的原因很复杂，接收者可能在出现网络错误之前已经收到了信息，也可能没有收到，又或接收者的进程死掉了。发送者能够获得真实情况的唯一办法就是重新连接到接收者，询问接收者错误的原因，这就是分布式系统开发里的“部分失败”问题。</p></blockquote><a id="more"></a><blockquote><p>Zookeeper就是解决分布式系统“部分失败”的框架。Zookeeper不是让分布式系统避免“部分失败”问题，而是让分布式系统当碰到部分失败时候，可以正确的处理此类的问题，让分布式系统能正常的运行。<br>不管是hadoop还是其它分布式系统，就好比我们人的身体，有心脏，胃，有呼吸道系统。腿，手等等。这么多的子系统处于分布式环境，怎么协调呢？那就是我们大脑（zookeeper），大家可以把zookeepr想成大脑，本身没有其它功能，只有负责协调，联络子系统的功能</p></blockquote><h2 id="分布式应用"><a href="#分布式应用" class="headerlink" title="分布式应用"></a>分布式应用</h2><p>分布式应用可以在给定时间（同时）在网络中的多个系统上运行，通过协调它们以快速有效的方式完成特定任务。通常来说，对于复杂而耗时的任务，非分布式应用（运行在单个系统中）需要几个小时才能完成，而分布式应用通过使用所有系统涉及的计算能力可以在几分钟内完成。<br>通过将分布式应用配置为在更多系统上运行，可以进一步减少完成任务的时间。分布式应用正在运行的一组系统称为集群，而在集群中运行的每台机器被称为节点。<br>分布式应用有两部分， Server（服务器） 和 Client（客户端） 应用程序。服务器应用程序实际上是分布式的，并具有通用接口，以便客户端可以连接到集群中的任何服务器并获得相同的结果。 客户端应用程序是与分布式应用进行交互的工具。</p><h2 id="分布式应用的优点"><a href="#分布式应用的优点" class="headerlink" title="分布式应用的优点"></a>分布式应用的优点</h2><p><code>可靠性</code> - 单个或几个系统的故障不会使整个系统出现故障。<br><code>可扩展性</code> - 可以在需要时增加性能，通过添加更多机器，在应用程序配置中进行微小的更改，而不会有停机时间。<br><code>透明性</code> - 隐藏系统的复杂性，并将其显示为单个实体/应用程序。<br>分布式应用的挑战<br><code>竞争条件</code> - 两个或多个机器尝试执行特定任务，实际上只需在任意给定时间由单个机器完成。例如，共享资源只能在任意给定时间由单个机器修改。<br><code>死锁</code> - 两个或多个操作等待彼此无限期完成。<br><code>不一致</code> - 数据的部分失败。</p><h2 id="ZooKeeper提供的常见服务如下"><a href="#ZooKeeper提供的常见服务如下" class="headerlink" title="ZooKeeper提供的常见服务如下 :"></a>ZooKeeper提供的常见服务如下 :</h2><p><code>命名服务</code> - 按名称标识集群中的节点。它类似于DNS，但仅对于节点。<br><code>配置管理</code> - 加入节点的最近的和最新的系统配置信息。<br><code>集群管理</code> - 实时地在集群和节点状态中加入/离开节点。<br><code>选举算法</code> - 选举一个节点作为协调目的的leader。<br><code>锁定和同步服务</code> - 在修改数据的同时锁定数据。此机制可帮助你在连接其他分布式应用程序（如Apache HBase）时进行自动故障恢复。<br><code>高度可靠的数据注册表</code> - 即使在一个或几个节点关闭时也可以获得数据。<br>分布式应用程序提供了很多好处，但它们也抛出了一些复杂和难以解决的挑战。ZooKeeper框架提供了一个完整的机制来克服所有的挑战。竞争条件和死锁使用故障安全同步方法进行处理。另一个主要缺点是数据的不一致性，ZooKeeper使用原子性解析。</p><h2 id="ZooKeeper的好处"><a href="#ZooKeeper的好处" class="headerlink" title="ZooKeeper的好处"></a>ZooKeeper的好处</h2><p>以下是使用ZooKeeper的好处：<br>简单的分布式协调过程<br><code>同步</code> - 服务器进程之间的相互排斥和协作。此过程有助于Apache HBase进行配置管理。<br>有序的消息<br><code>序列化</code> - 根据特定规则对数据进行编码。确保应用程序运行一致。这种方法可以在MapReduce中用来协调队列以执行运行的线程。<br><code>可靠性</code><br><code>原子性</code> - 数据转移完全成功或完全失败，但没有事务是部分的。</p><h2 id="ZooKeeper应用的典型场景"><a href="#ZooKeeper应用的典型场景" class="headerlink" title="ZooKeeper应用的典型场景"></a>ZooKeeper应用的典型场景</h2><p>ZooKeeper 是一个高可用的分布式数据管理与协调框架。基于对ZAB算法的实现，该框架<br>能够很好地保证分布式环境中数据的一致性。也是基于这样的特性，使得 ZooKeeper 成为了<br>解决分布式一致性问题的利器。</p><h3 id="1-数据发布与订阅（配置中心）"><a href="#1-数据发布与订阅（配置中心）" class="headerlink" title="1.数据发布与订阅（配置中心）"></a>1.数据发布与订阅（配置中心）</h3><p>  数据发布与订阅，即所谓的配置中心，顾名思义就是发布者将数据发布到 ZooKeeper 节点上,<br>供订阅者进行数据订阅，进而达到动态获取数据的目的，实现配置信息的集中式管理和动态更新。</p><p>对于：数据量通常比较小。数据内容在运行时动态变化。集群中各机器共享，配置一致。<br>这样的全局配置信息就可以发布到 ZooKeeper上，让客户端（集群的机器）去订阅该消息。<br>发布/订阅系统一般有两种设计模式，分别是推（Push）和拉（Pull）模式。</p><pre><code>- 推模式    服务端主动将数据更新发送给所有订阅的客户端- 拉模式    客户端主动发起请求来获取最新数据，通常客户端都采用定时轮询拉取的方式</code></pre><p>ZooKeeper 采用的是推拉相结合的方式：<br>    客户端想服务端注册自己需要关注的节点，一旦该节点的数据发生变更，那么服务端就会向相应<br>的客户端发送Watcher事件通知，客户端接收到这个消息通知后，需要主动到服务端获取最新的数据</p><h3 id="2-命名服务"><a href="#2-命名服务" class="headerlink" title="2.命名服务"></a>2.命名服务</h3><p>  命名服务也是分布式系统中比较常见的一类场景。在分布式系统中，通过使用命名服务，客户端<br>应用能够根据指定名字来获取资源或服务的地址，提供者等信息。被命名的实体通常可以是集群中的<br>机器，提供的服务，远程对象等等——这些我们都可以统称他们为名字。<br>其中较为常见的就是一些分布式服务框架（如RPC）中的服务地址列表。通过在ZooKeepr里<br>创建顺序节点，能够很容易创建一个全局唯一的路径，这个路径就可以作为一个名字。<br>ZooKeeper 的命名服务即生成全局唯一的ID。      </p><h3 id="3-分布式协调服务-通知"><a href="#3-分布式协调服务-通知" class="headerlink" title="3.分布式协调服务/通知"></a>3.分布式协调服务/通知</h3><pre><code>ZooKeeper 中特有 Watcher 注册与异步通知机制，能够很好的实现分布式环境下不同机器，</code></pre><p>甚至不同系统之间的通知与协调，从而实现对数据变更的实时处理。使用方法通常是不同的客户端<br>如果 机器节点 发生了变化，那么所有订阅的客户端都能够接收到相应的Watcher通知，并做出相应<br>的处理。<br>ZooKeeper的分布式协调/通知，是一种通用的分布式系统机器间的通信方式。</p><h3 id="4-Master选举"><a href="#4-Master选举" class="headerlink" title="4.Master选举"></a>4.Master选举</h3><p>Master 选举可以说是 ZooKeeper 最典型的应用场景了。比如 HDFS 中 Active NameNode 的选举、YARN 中 Active ResourceManager 的选举和 HBase 中 Active HMaster 的选举等。<br>    针对 Master 选举的需求，通常情况下，我们可以选择常见的关系型数据库中的主键特性来<br>实现：希望成为 Master 的机器都向数据库中插入一条相同主键ID的记录，数据库会帮我们进行<br>主键冲突检查，也就是说，只有一台机器能插入成功——那么，我们就认为向数据库中成功插入数据<br>的客户端机器成为Master。<br>    依靠关系型数据库的主键特性确实能够很好地保证在集群中选举出唯一的一个Master。<br>    但是，如果当前选举出的 Master 挂了，那么该如何处理？谁来告诉我 Master 挂了呢？<br>显然，关系型数据库无法通知我们这个事件。但是，ZooKeeper 可以做到！<br>    利用 ZooKeepr 的强一致性，能够很好地保证在分布式高并发情况下节点的创建一定能够<br>保证全局唯一性，即 ZooKeeper 将会保证客户端无法创建一个已经存在的 数据单元节点。<br>    也就是说，如果同时有多个客户端请求创建同一个临时节点，那么最终一定只有一个客户端<br>请求能够创建成功。利用这个特性，就能很容易地在分布式环境中进行 Master 选举了。<br>    成功创建该节点的客户端所在的机器就成为了 Master。同时，其他没有成功创建该节点的<br>客户端，都会在该节点上注册一个子节点变更的 Watcher，用于监控当前 Master 机器是否存<br>活，一旦发现当前的Master挂了，那么其他客户端将会重新进行 Master 选举。<br>    这样就实现了 Master 的动态选举。</p><h3 id="5-分布式锁"><a href="#5-分布式锁" class="headerlink" title="5.分布式锁"></a>5.分布式锁</h3><p>分布式锁是控制分布式系统之间同步访问共享资源的一种方式<br>分布式锁又分为排他锁和共享锁两种<br>排它锁<br>ZooKeeper如何实现排它锁？<br>定义锁<br>ZooKeeper 上的一个 机器节点 可以表示一个锁<br>获得锁<br>把ZooKeeper上的一个节点看作是一个锁，获得锁就通过创建临时节点的方式来实现。<br>ZooKeeper 会保证在所有客户端中，最终只有一个客户端能够创建成功，那么就可以<br>认为该客户端获得了锁。同时，所有没有获取到锁的客户端就需要到/exclusive_lock<br>节点上注册一个子节点变更的Watcher监听，以便实时监听到lock节点的变更情况。<br>释放锁<br>因为锁是一个临时节点，释放锁有两种方式<br>当前获得锁的客户端机器发生宕机或重启，那么该临时节点就会被删除，释放锁<br>正常执行完业务逻辑后，客户端就会主动将自己创建的临时节点删除，释放锁。<br>无论在什么情况下移除了lock节点，ZooKeeper 都会通知所有在 /exclusive_lock 节点上注册了节点变更 Watcher 监听的客户端。这些客户端在接收到通知后，再次重新发起分布式锁获取，即重复『获取锁』过程。<br>共享锁<br>共享锁在同一个进程中很容易实现，但是在跨进程或者在不同 Server 之间就不好实现了。Zookeeper 却很容易实现这个功能，实现方式也是需要获得锁的 Server 创建一个 EPHEMERAL_SEQUENTIAL 目录节点，然后调用 getChildren方法获取当前的目录节点列表中最小的目录节点是不是就是自己创建的目录节点，如果正是自己创建的，那么它就获得了这个锁，如果不是那么它就调用 exists(String path, boolean watch) 方法并监控 Zookeeper 上目录节点列表的变化，一直到自己创建的节点是列表中最小编号的目录节点，从而获得锁，释放锁很简单，只要删除前面它自己所创建的目录节点就行了。</p><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本文介绍的 Zookeeper 的基本知识，以及介绍了几个典型的应用场景。这些都是 Zookeeper<br> 的基本功能，最重要的是 Zoopkeeper 提供了一套很好的分布式集群管理的机制，就是它这种基于<br> 层次型的目录树的数据结构，并对树中的节点进行有效管理，从而可以设计出多种多样的分布式的数<br> 据管理模型，而不仅仅局限于上面提到的几个常用应用场景</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;什么是Apache-ZooKeeper&quot;&gt;&lt;a href=&quot;#什么是Apache-ZooKeeper&quot; class=&quot;headerlink&quot; title=&quot;什么是Apache ZooKeeper&quot;&gt;&lt;/a&gt;什么是Apache ZooKeeper&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Apache ZooKeeper是由集群（节点组）使用的一种服务，用于在自身之间协调，并通过稳健的同步技术维护共享数据。ZooKeeper本身是一个分布式应用程序，为写入分布式应用程序提供服务。&lt;br&gt;Zookeeper是针对大型分布式系统的高可靠的协调系统。由这个定义我们知道zookeeper是个协调系统，作用的对象是分布式系统。为什么分布式系统需要一个协调系统了？理由如下：&lt;br&gt;开发分布式系统是件很困难的事情，其中的困难主要体现在分布式系统的“部分失败”。“部分失败”是指信息在网络的两个节点之间传送时候，如果网络出了故障，发送者无法知道接收者是否收到了这个信息，而且这种故障的原因很复杂，接收者可能在出现网络错误之前已经收到了信息，也可能没有收到，又或接收者的进程死掉了。发送者能够获得真实情况的唯一办法就是重新连接到接收者，询问接收者错误的原因，这就是分布式系统开发里的“部分失败”问题。&lt;/p&gt;
+&lt;/blockquote&gt;
+    
+    </summary>
+    
+    
+      <category term="Zookeeper" scheme="http://lzengp.cn/tags/Zookeeper/"/>
+    
+  </entry>
   
   <entry>
     <title>Hibernate学习笔记(四)</title>
