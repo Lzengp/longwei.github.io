@@ -6,18 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lzengp.cn">
-  <title>Tag: dubbo | Lzengp的博客</title>
+  <title>Mybatis学习笔记(三) | Lzengp的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="来自湖南科技大学，正在努力学习中，加油！">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lzengp的博客">
-<meta property="og:url" content="http://lzengp.cn/tags/dubbo/index.html">
+  <meta name="description" content="数据模型分析思路  每张表记录的数据内容分模块对每张表记录的内容进行熟悉，相当于学习系统需求（功能）的过程 每张表重要的字段设置非空字段、外键字段 数据库级别表与表之间的关系外键关系 表与表之间的业务关系在分析表与表之间的业务关系时一定要建立在某个业务意义基础上去分析">
+<meta name="keywords" content="高级映射,resultMap与resultType">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mybatis学习笔记(三)">
+<meta property="og:url" content="http://lzengp.cn/2018/08/14/Mybatis学习笔记(三)/index.html">
 <meta property="og:site_name" content="Lzengp的博客">
-<meta property="og:description" content="来自湖南科技大学，正在努力学习中，加油！">
+<meta property="og:description" content="数据模型分析思路  每张表记录的数据内容分模块对每张表记录的内容进行熟悉，相当于学习系统需求（功能）的过程 每张表重要的字段设置非空字段、外键字段 数据库级别表与表之间的关系外键关系 表与表之间的业务关系在分析表与表之间的业务关系时一定要建立在某个业务意义基础上去分析">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper1.png">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper2.png">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper3.png">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper4.png">
+<meta property="og:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper5.png">
+<meta property="og:updated_time" content="2018-09-27T02:11:13.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lzengp的博客">
-<meta name="twitter:description" content="来自湖南科技大学，正在努力学习中，加油！">
+<meta name="twitter:title" content="Mybatis学习笔记(三)">
+<meta name="twitter:description" content="数据模型分析思路  每张表记录的数据内容分模块对每张表记录的内容进行熟悉，相当于学习系统需求（功能）的过程 每张表重要的字段设置非空字段、外键字段 数据库级别表与表之间的关系外键关系 表与表之间的业务关系在分析表与表之间的业务关系时一定要建立在某个业务意义基础上去分析">
+<meta name="twitter:image" content="http://pc57xo61v.bkt.clouddn.com/mybatisMapper1.png">
   
     <link rel="alternative" href="/atom.xml" title="Lzengp的博客" type="application/atom+xml">
   
@@ -153,78 +161,270 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Mybatis学习笔记(三)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/09/20/快速了解一些中间件/" class="archive-article-date">
-  	<time datetime="2018-09-20T06:28:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-09-20</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/09/20/快速了解一些中间件/">快速了解一些中间件</a>
+    <h1 class="article-title" itemprop="name">
+      Mybatis学习笔记(三)
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+
+        
+        <!--字数统计-->
+<div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text"> 字数统计： </span>
+        <span class="post-count">3,309字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text"> 阅读时长: </span>
+        <span class="post-count">14分</span>
+      </span>
+    </span>
+</div>
+
+        
+        <a href="/2018/08/14/Mybatis学习笔记(三)/" class="archive-article-date">
+  	<time datetime="2018-08-14T04:50:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="数据模型分析思路"><a href="#数据模型分析思路" class="headerlink" title="数据模型分析思路"></a>数据模型分析思路</h2><blockquote>
+<ol>
+<li>每张表记录的数据内容<br>分模块对每张表记录的内容进行熟悉，相当于学习系统需求（功能）的过程</li>
+<li>每张表重要的字段设置<br>非空字段、外键字段</li>
+<li>数据库级别表与表之间的关系<br>外键关系</li>
+<li>表与表之间的业务关系<br>在分析表与表之间的业务关系时一定要建立在某个业务意义基础上去分析</li>
+</ol>
+</blockquote>
+<a id="more"></a>
+<h3 id="表与表之间的业务关系"><a href="#表与表之间的业务关系" class="headerlink" title="表与表之间的业务关系"></a>表与表之间的业务关系</h3><p>user和orders<br>user–&gt;orders:一个用户可以创建多个订单，一对多<br>orders–&gt;user:一个订单只由一个用户创建，一对一</p>
+<p>orders和orderdetail<br>orders–&gt;orderdetail:一个订单可以包含多个订单明细，因为一个订单可以购买多个商品，每个商品的购买信息在orderdetail记录，对多关系<br>orderdetail–&gt;orders:一个订单明细只能包括在一个订单中，一对一</p>
+<p>orderdetail和items<br>orderdetail–&gt;items:一个订单明细只对应一个商品信息，一对一<br>items–&gt;orderdetail:一个商品可以包括多个订单明细，一对多</p>
+<p><img src="http://pc57xo61v.bkt.clouddn.com/mybatisMapper1.png" alt=""></p>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><p>user用户表：id（自增，主键）、username、sex、birthday、address<br>orders订单表：id（自增，主键）、number、createtime、note（varchar）、user_id（外键）<br>orderdetail订单明细表：id(自增，主键)、orders_id(外键，订单id)、items_id（外键，商品id）、items_num（购买的商品数量）<br>items商品表：id、name、detail（商品详情）、price<br>根据数据库创建四个实体类，得到它们的getter和setter方法。（文末会有github地址，上面有本博客全部代码）</p>
+<h2 id="一对一映射"><a href="#一对一映射" class="headerlink" title="一对一映射"></a>一对一映射</h2><h3 id="resultType实现一对一映射"><a href="#resultType实现一对一映射" class="headerlink" title="resultType实现一对一映射"></a>resultType实现一对一映射</h3><p>需要执行查询的sql语句<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> orders.*,</span><br><span class="line">	   user.username,</span><br><span class="line">	   user.sex,</span><br><span class="line">	   user.address </span><br><span class="line">	<span class="keyword">FROM</span> orders,<span class="keyword">user</span> </span><br><span class="line">	<span class="keyword">WHERE</span> orders.user_id=user.id</span><br></pre></td></tr></table></figure></p>
+<p>因为resultType映射结果为一个类，但所建立的实体类中没有包含所有的输出结果，所以要创建一个中间类，包含查询结果所有的属性。一般的操作是查询结果中谁的属性多就继承谁，然后再新建几个属性。具体代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.hnust.mybatis.po;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Orders扩展类，通过此类映射订单和用户查询的结果，一般谁属性多就继承谁，这样少写些属性</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 龙伟</span></span><br><span class="line"><span class="comment"> * 2018年8月14日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrdersCustomer</span>  <span class="keyword">extends</span> <span class="title">Orders</span></span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * user.username,</span></span><br><span class="line"><span class="comment">	 * user.sex,</span></span><br><span class="line"><span class="comment">	 * user.address </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> String username;</span><br><span class="line">	<span class="keyword">private</span> String sex;</span><br><span class="line">	<span class="keyword">private</span> String address;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getUsername</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUsername</span><span class="params">(String username)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.username = username;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getSex</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setSex</span><span class="params">(String sex)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.sex = sex;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getAddress</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> address;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAddress</span><span class="params">(String address)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.address = address;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>映射文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span><br><span class="line"><span class="meta">&lt;!DOCTYPE mapper</span></span><br><span class="line"><span class="meta">PUBLIC "-//mybatis.org//DTD Config 3.0//EN"</span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">mapper</span> <span class="attr">namespace</span>=<span class="string">"cn.hnust.mybatis.mapper.OrdersMapperCustomer"</span>&gt;</span></span><br><span class="line">	 <span class="comment">&lt;!-- 使用resultType来映射 --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findOrderUser"</span> <span class="attr">resultType</span>=<span class="string">"cn.hnust.mybatis.po.OrdersCustomer"</span>&gt;</span></span><br><span class="line">	 	SELECT orders.*,</span><br><span class="line">		 	user.username,</span><br><span class="line">			user.sex,</span><br><span class="line">			user.address </span><br><span class="line">		FROM orders,user </span><br><span class="line">		WHERE orders.user_id=user.id</span><br><span class="line">	 <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mapper</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>映射文件接口类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.hnust.mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hnust.mybatis.po.OrdersCustomer;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * OrdersMapperCustomer接口</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 龙伟</span></span><br><span class="line"><span class="comment"> * 2018年8月14日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OrdersMapperCustomer</span> </span>&#123;</span><br><span class="line">	<span class="comment">//用resultType实现一对一映射查询</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;OrdersCustomer&gt; <span class="title">findOrderUser</span><span class="params">()</span> <span class="keyword">throws</span> Exception</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>测试类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.hnust.mybatis.mapper;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.io.Resources;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSession;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactory;</span><br><span class="line"><span class="keyword">import</span> org.apache.ibatis.session.SqlSessionFactoryBuilder;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.BeforeEach;</span><br><span class="line"><span class="keyword">import</span> org.junit.jupiter.api.Test;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cn.hnust.mybatis.po.OrdersCustomer;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * OrdersUser测试类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> 龙伟</span></span><br><span class="line"><span class="comment"> * 2018年8月1日</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OrdersMapperCustomerTest</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">private</span> SqlSessionFactory sqlSessionFactory;</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 创建Session工厂</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@BeforeEach</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUp</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//得到mybatis配置文件</span></span><br><span class="line">		String resource = <span class="string">"SqlMapConfig.xml"</span>;</span><br><span class="line">		<span class="comment">//得到配置文件流</span></span><br><span class="line">		InputStream inputStream = Resources.getResourceAsStream(resource);</span><br><span class="line">		<span class="comment">//创建会话工厂，传入mybatis的配置文件信息</span></span><br><span class="line">		sqlSessionFactory = <span class="keyword">new</span> SqlSessionFactoryBuilder().build(inputStream);</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * resultTyep实现一对一映射查询</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Test</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testOrdersCustomer</span><span class="params">()</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		<span class="comment">//通过工厂创建session</span></span><br><span class="line">		SqlSession sqlSession = sqlSessionFactory.openSession();</span><br><span class="line">		<span class="comment">//创建OrdersMapperCustomer对象，mybatis自动生成mapper代理对象</span></span><br><span class="line">		OrdersMapperCustomer ordersMapperCustomer = sqlSession.getMapper(OrdersMapperCustomer.class);</span><br><span class="line">		<span class="comment">//调用方法</span></span><br><span class="line">		List&lt;OrdersCustomer&gt; list = ordersMapperCustomer.findOrderUser();</span><br><span class="line">		System.out.println(list);</span><br><span class="line">		<span class="comment">//关闭sqlSession</span></span><br><span class="line">		sqlSession.close();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过打断点debug测试，list中的内容如下图，查询出了两条记录，并且order表中所有内容都有，user表中username,sex,address也都有，测试结果成功，如果想获取第一条数据中的username，可输入list.get(0).getUsername()得到。<br><img src="http://pc57xo61v.bkt.clouddn.com/mybatisMapper2.png" alt=""></p>
+<h3 id="resultMap实现一对一查询"><a href="#resultMap实现一对一查询" class="headerlink" title="resultMap实现一对一查询"></a>resultMap实现一对一查询</h3><p>在映射文件中添加如下内容<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 使用resultMap来映射 --&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- type:要映射的类</span></span><br><span class="line"><span class="comment">  	   id：resultMap标识名</span></span><br><span class="line"><span class="comment">  	   column：数据库里面的名字</span></span><br><span class="line"><span class="comment">  	   peoperty：类里面的名字</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"cn.hnust.mybatis.po.Orders"</span> <span class="attr">id</span>=<span class="string">"OrdersResultMap"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">id</span>  <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"user_id"</span> <span class="attr">property</span>=<span class="string">"userId"</span> /&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"number"</span> <span class="attr">property</span>=<span class="string">"number"</span> /&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"createtime"</span> <span class="attr">property</span>=<span class="string">"createtime"</span> /&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"note"</span> <span class="attr">property</span>=<span class="string">"note"</span> /&gt;</span></span><br><span class="line"> 	<span class="comment">&lt;!-- </span></span><br><span class="line"><span class="comment"> 		配置映射的关联的用户信息</span></span><br><span class="line"><span class="comment"> 		association:用与映射关联查询单个对象的信息，映射单个记录</span></span><br><span class="line"><span class="comment"> 		property：将要关联查询的用户信息映射到Orders中哪个属性</span></span><br><span class="line"><span class="comment"> 		javaType：映射到user的哪个属性</span></span><br><span class="line"><span class="comment"> 	 --&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"user"</span> <span class="attr">javaType</span>=<span class="string">"cn.hnust.mybatis.po.User"</span>&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">id</span>  <span class="attr">column</span>=<span class="string">"user_id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"username"</span> <span class="attr">property</span>=<span class="string">"username"</span> /&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"sex"</span> <span class="attr">property</span>=<span class="string">"sex"</span> /&gt;</span></span><br><span class="line"> 		<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"address"</span> <span class="attr">property</span>=<span class="string">"address"</span> /&gt;</span></span><br><span class="line"> 	<span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 使用resultMap来映射 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findOrderUserResultMap"</span> <span class="attr">resultMap</span>=<span class="string">"OrdersResultMap"</span>&gt;</span></span><br><span class="line"> 	SELECT orders.*,</span><br><span class="line">	 	user.username,</span><br><span class="line">		user.sex,</span><br><span class="line">		user.address </span><br><span class="line">	FROM orders,user </span><br><span class="line">	WHERE orders.user_id=user.id</span><br><span class="line"> <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>实体类Orders中添加用户信息<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用户信息（resultMap）</span></span><br><span class="line">	<span class="keyword">private</span> User user;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> User <span class="title">getUser</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> user;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setUser</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.user = user;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>添加映射文件接口，再在测试类中修改调用的方法，Debug测试查看结果<br><img src="http://pc57xo61v.bkt.clouddn.com/mybatisMapper3.png" alt=""></p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>实现一对一查询<br>resultType：使用resultType较为简单，如果pojo中没有包括查询出来的列名，需要增加列名对应的属性，既可完成映射。<br>如果没有查询结果的特殊要求建议使用resultType<br>resultMap：需要单独定义resultMap，实现有点麻烦，如果对查询结果有特殊要求，使用resultMap可以完成将关联查询映射pojo属性中</p>
+<p>resultMap可以实现延迟加载，resultType无法实现延迟加载</p>
+<h2 id="resultMap实现一对多查询"><a href="#resultMap实现一对多查询" class="headerlink" title="resultMap实现一对多查询"></a>resultMap实现一对多查询</h2><p>需要执行的查询语句<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> orders.*,</span><br><span class="line">		  	user.username,</span><br><span class="line">			user.sex,</span><br><span class="line">			user.address,</span><br><span class="line">			orderdetail.id orderdetail_id,</span><br><span class="line">			orderdetail.items_id,</span><br><span class="line">			orderdetail.items_num </span><br><span class="line">		<span class="keyword">FROM</span> orders,<span class="keyword">user</span>,orderdetail</span><br><span class="line">		<span class="keyword">WHERE</span> orders.user_id=user.id <span class="keyword">AND</span> orders.id=orderdetail.orders_id</span><br></pre></td></tr></table></figure></p>
+<p>数据库查询结果<br><img src="http://pc57xo61v.bkt.clouddn.com/mybatisMapper4.png" alt=""><br>发现有两条一样的订单，虽然里面的数据确不一样，但这显然是不允许的，应该是一条订单包含这两条明细<br>要求：对orders映射不能出现重复记录<br>方案：在orders类中添加<code>List&lt;Orderdetail&gt; orderdetails</code>属性。<br>最终会将订单信息映射到orders中，订单所对应的订单明细映射到orders中的orderdetails属性中<br>映射成的orders记录数为两条（orders信息不重复）<br>每个orders中的orderdetails属性存储了所有订单所对应的订单明细</p>
+<h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>在orders类中添加orderdetails属性<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//订单明细表</span></span><br><span class="line">	<span class="keyword">private</span> List&lt;Orderdetail&gt; orderdetails;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;Orderdetail&gt; <span class="title">getOrderdetails</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> orderdetails;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setOrderdetails</span><span class="params">(List&lt;Orderdetail&gt; orderdetails)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.orderdetails = orderdetails;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>配置映射文件<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 订单及订单明细的resultMap</span></span><br><span class="line"><span class="comment">	使用extends继承，不用再配置订单信息和用户信息</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"cn.hnust.mybatis.po.Orders"</span> <span class="attr">id</span>=<span class="string">"OrdersAndOrderdetailResultMap"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">extends</span>=<span class="string">"OrdersResultMap"</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 订单信息，使用extends继承  --&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 用户信息， 使用extends继承 --&gt;</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">&lt;!-- 订单明细信息 </span></span><br><span class="line"><span class="comment"> 一个订单关联查询出了多条明细，要使用collection进行映射</span></span><br><span class="line"><span class="comment"> collection：对关联查询到多条记录映射到集合对象中</span></span><br><span class="line"><span class="comment"> property：将关联查询到多条记录映射到Orders属性中</span></span><br><span class="line"><span class="comment"> ofType:指定映射到list集合属性中pojo的类型</span></span><br><span class="line"><span class="comment"> --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"orderdetail"</span> <span class="attr">ofType</span>=<span class="string">"cn.hnust.mybatis.po.Orderdetail"</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- id:订单明细唯一标识</span></span><br><span class="line"><span class="comment">  		property：要将订单明细的唯一标识映射到Orderdetail的某个属性</span></span><br><span class="line"><span class="comment">   --&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="name">id</span>  <span class="attr">column</span>=<span class="string">"orderdetail_id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_id"</span> <span class="attr">property</span>=<span class="string">"itemsId"</span>/&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_num"</span> <span class="attr">property</span>=<span class="string">"itemsNum"</span>/&gt;</span></span><br><span class="line">   	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"orders_id"</span> <span class="attr">property</span>=<span class="string">"ordersId"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findOrdersAndOrderdetailResultMap"</span> <span class="attr">resultMap</span>=<span class="string">"OrdersAndOrderdetailResultMap"</span>&gt;</span></span><br><span class="line"> 	SELECT orders.*,</span><br><span class="line">  	user.username,</span><br><span class="line">	user.sex,</span><br><span class="line">	user.address,</span><br><span class="line">	orderdetail.id orderdetail_id,</span><br><span class="line">	orderdetail.items_id,</span><br><span class="line">	orderdetail.items_num </span><br><span class="line">FROM orders,user,orderdetail</span><br><span class="line">WHERE orders.user_id=user.id AND orders.id=orderdetail.orders_id</span><br><span class="line"><span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>测试结果<br><img src="http://pc57xo61v.bkt.clouddn.com/mybatisMapper5.png" alt=""><br>可以看到查询出两条订单信息，而不是四条订单信息，在一条订单信息中包含两条订单明细。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>mybatis使用resultMap的collection对关联查询的多条记录映射到一个list集合属性中<br>使用resultType实现：<br>将订单明细映射到orders中的orderdetails中，需要自己处理，使用双重循环遍历，去掉重复记录，将订单明细放到ordertails中</p>
+<h2 id="resultMap实现多对多映射查询"><a href="#resultMap实现多对多映射查询" class="headerlink" title="resultMap实现多对多映射查询"></a>resultMap实现多对多映射查询</h2><p>实现user和items的多对多查询<br>需要实现的sql语句<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>  orders.*,</span><br><span class="line">	  	user.username,</span><br><span class="line">		user.sex,</span><br><span class="line">		user.address,</span><br><span class="line">		orderdetail.id orderdetail_id,</span><br><span class="line">		orderdetail.items_id,</span><br><span class="line">		orderdetail.items_num ,</span><br><span class="line">		items.name items_name,</span><br><span class="line">		items.price items_price,</span><br><span class="line">		items.detail items_detail</span><br><span class="line"><span class="keyword">FROM</span> orders,<span class="keyword">user</span>,orderdetail,items</span><br><span class="line"><span class="keyword">WHERE</span> orders.user_id=user.id <span class="keyword">AND</span> orders.id=orderdetail.orders_id <span class="keyword">AND</span> orderdetail.items_id=items.id</span><br></pre></td></tr></table></figure></p>
+<p>思路：<br>将用户信息映射到user中<br>在user类中添加订单列表属性<code>List&lt;Orders&gt; orderlist</code>,将用户创建的订单映射到orderlist中<br>在Orders中添加订单明细列表属性<code>List&lt;Orderdetail&gt; orderdetails</code>,将订单的明细映射到orderdetails<br>在Orderdetail中添加items属性，将订单明细所对应的商品映射到items<br>按照上面的思路，在各个实体类中添加以上的属性，然后在映射文件中添加如下代码<br>查询的结果主要放在user中，而为了让user和itmes有联系，就需要用到orders和orderdetail，先将用户创建的订单映射到用户表中的订单列表属性，用户与订单是一对多，要用到collection关键字。再将订单生成的订单明细映射到订单表的订单明细列表属性中，订单和订单明细是一对多，也要用到关键字collection，但这个collection需要建立在第一个collection的基础上才有的，所有要写在它里面。最后将订单明细中的商品信息映射到订单明细表的商品属性中，它们是一对一，要用关键字association，它是建立在第二个collection的基础上的，所以要放到第二个collection的里面。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">&lt;!-- 查询用户及购买的商品 --&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">resultMap</span> <span class="attr">type</span>=<span class="string">"cn.hnust.mybatis.po.User"</span> <span class="attr">id</span>=<span class="string">"UserAndItemsResultMap"</span>&gt;</span></span><br><span class="line"> <span class="comment">&lt;!-- 用户信息 --&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"user_id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"username"</span> <span class="attr">property</span>=<span class="string">"username"</span>/&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"sex"</span> <span class="attr">property</span>=<span class="string">"sex"</span>/&gt;</span></span><br><span class="line">	 <span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"address"</span> <span class="attr">property</span>=<span class="string">"address"</span>/&gt;</span></span><br><span class="line">	 </span><br><span class="line"> <span class="comment">&lt;!-- 订单信息</span></span><br><span class="line"><span class="comment"> 	一个用户对应多个订单，使用collection映射</span></span><br><span class="line"><span class="comment">  --&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"ordersList"</span> <span class="attr">ofType</span>=<span class="string">"cn.hnust.mybatis.po.Orders"</span>&gt;</span></span><br><span class="line">		  	<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">		  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"user_id"</span> <span class="attr">property</span>=<span class="string">"userId"</span>/&gt;</span></span><br><span class="line">		  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"number"</span> <span class="attr">property</span>=<span class="string">"number"</span>/&gt;</span></span><br><span class="line">		  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"createtime"</span> <span class="attr">property</span>=<span class="string">"createtime"</span>/&gt;</span></span><br><span class="line">		  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"note"</span> <span class="attr">property</span>=<span class="string">"note"</span>/&gt;</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">&lt;!-- 订单明细 </span></span><br><span class="line"><span class="comment">		一个订单包含多个订单明细</span></span><br><span class="line"><span class="comment">	 --&gt;</span></span><br><span class="line">		  <span class="tag">&lt;<span class="name">collection</span> <span class="attr">property</span>=<span class="string">"orderdetails"</span> <span class="attr">ofType</span>=<span class="string">"cn.hnust.mybatis.po.Orderdetail"</span>&gt;</span></span><br><span class="line">			  	<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"orderdetail_id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">			  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_id"</span> <span class="attr">property</span>=<span class="string">"itemsId"</span>/&gt;</span></span><br><span class="line">			  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_num"</span> <span class="attr">property</span>=<span class="string">"itemsNum"</span>/&gt;</span></span><br><span class="line">			  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"orders_id"</span> <span class="attr">property</span>=<span class="string">"ordersId"</span>/&gt;</span></span><br><span class="line">		 </span><br><span class="line">			 	 <span class="comment">&lt;!-- 商品信息</span></span><br><span class="line"><span class="comment">		 	一个订单明细对应一个商品</span></span><br><span class="line"><span class="comment">		  --&gt;</span></span><br><span class="line">			  <span class="tag">&lt;<span class="name">association</span> <span class="attr">property</span>=<span class="string">"items"</span> <span class="attr">javaType</span>=<span class="string">"cn.hnust.mybatis.po.Items"</span>&gt;</span></span><br><span class="line">			  		<span class="tag">&lt;<span class="name">id</span> <span class="attr">column</span>=<span class="string">"items_id"</span> <span class="attr">property</span>=<span class="string">"id"</span>/&gt;</span></span><br><span class="line">				  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_price"</span> <span class="attr">property</span>=<span class="string">"price"</span>/&gt;</span></span><br><span class="line">				  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_detail"</span> <span class="attr">property</span>=<span class="string">"detail"</span>/&gt;</span></span><br><span class="line">				  	<span class="tag">&lt;<span class="name">result</span> <span class="attr">column</span>=<span class="string">"items_name"</span> <span class="attr">property</span>=<span class="string">"name"</span>/&gt;</span></span><br><span class="line">			  <span class="tag">&lt;/<span class="name">association</span>&gt;</span></span><br><span class="line">		  <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;/<span class="name">collection</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;/<span class="name">resultMap</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 查询用户及购买的商品信息，使用resultMap --&gt;</span> 	</span><br><span class="line"> <span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">"findUserAndItemsResultMap"</span> <span class="attr">resultMap</span>=<span class="string">"UserAndItemsResultMap"</span>&gt;</span></span><br><span class="line">		SELECT orders.*,</span><br><span class="line">		  	user.username,</span><br><span class="line">			user.sex,</span><br><span class="line">			user.address,</span><br><span class="line">			orderdetail.id orderdetail_id,</span><br><span class="line">			orderdetail.items_id,</span><br><span class="line">			orderdetail.items_num ,</span><br><span class="line">			items.name items_name,</span><br><span class="line">			items.price items_price,</span><br><span class="line">			items.detail items_detail</span><br><span class="line">		FROM orders,user,orderdetail,items</span><br><span class="line">		WHERE orders.user_id=user.id AND orders.id=orderdetail.orders_id AND orderdetail.items_id=items.id</span><br><span class="line"> <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="resultMap小结"><a href="#resultMap小结" class="headerlink" title="resultMap小结"></a>resultMap小结</h2><p><strong>resultType</strong><br>作用：将查询结果按照sql列名pojo属性名一致性映射到pojo中<br>场合：常见一些明细记录的展示，比如用户购买商品明细，将关联查询信息全部展示在页面时，此时可直接使用resultType将每一条记录映射到pojo中，在前端页面遍历list（list中是pojo）即可。</p>
+<p><strong>resultMap</strong><br>使用association和collection完成一对一和一对多高级映射</p>
+<p><strong>association</strong><br>作用：将关联查询信息映射到一个pojo对象中。<br>场合：为了方便查询关联信息可以使用association将关联订单信息映射为用户对象的pojo属性中，比如：查询订单及关联用户信息，<br>使用resultType无法将查询结果映射到pojo对象的pojo属性中，根据对结果查询遍历的需要选择使用resultType还是resultMap</p>
+<p><strong>collection</strong><br>作用：将关联查询信息映射到一个list集合中。<br>场合：为了方便查询遍历关联信息可以使用collection将关联信息映射到list集合中，比如：查询用户权限范围模块及模块下的菜单，可以使用collection将模块映射到模块list中，将菜单列表映射到模块对象的菜单list属性中，这样做的的目的也是方便对查询结果集进行遍历查询。<br>如果使用resultType无法将查询结果映射到list集合中</p>
+<p><a href="https://github.com/Lzengp/MybatisMapper" target="_blank" rel="noopener">GitHub地址</a></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你的打赏！<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">dubbo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">高级映射</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Nginx</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Redis</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ElasticSearch</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Kafaka</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">resultMap与resultType</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://lzengp.cn/2018/08/14/Mybatis学习笔记(三)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/08/20/SpringMVC学习笔记(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SpringMVC学习笔记(一)
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/08/12/Mybatis学习笔记(二)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mybatis学习笔记(二)</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数据模型分析思路"><span class="toc-number">1.</span> <span class="toc-text">数据模型分析思路</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#表与表之间的业务关系"><span class="toc-number">1.1.</span> <span class="toc-text">表与表之间的业务关系</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据库设计"><span class="toc-number">2.</span> <span class="toc-text">数据库设计</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一对一映射"><span class="toc-number">3.</span> <span class="toc-text">一对一映射</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#resultType实现一对一映射"><span class="toc-number">3.1.</span> <span class="toc-text">resultType实现一对一映射</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#resultMap实现一对一查询"><span class="toc-number">3.2.</span> <span class="toc-text">resultMap实现一对一查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结"><span class="toc-number">3.3.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap实现一对多查询"><span class="toc-number">4.</span> <span class="toc-text">resultMap实现一对多查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#具体实现"><span class="toc-number">4.1.</span> <span class="toc-text">具体实现</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小结-1"><span class="toc-number">4.2.</span> <span class="toc-text">小结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap实现多对多映射查询"><span class="toc-number">5.</span> <span class="toc-text">resultMap实现多对多映射查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#resultMap小结"><span class="toc-number">6.</span> <span class="toc-text">resultMap小结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+
+  
 
 
+  
+
+  
+
+  
+
+
+ 
           </div>
         </div>
       </div>
@@ -288,9 +488,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
